@@ -1,0 +1,153 @@
+// Шаблони (заготівлі)
+// @extend %ім'я шаблону;
+// Сніппет (SCSS): ex
+
+// Стилі для чуйних зображеннь (IBG)
+%ibg {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+// Лічильник для списку
+%listCounter {
+	list-style-type: none;
+	counter-reset: item;
+	li {
+		position: relative;
+		&:before {
+			counter-increment: item;
+			content: counter(item);
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	}
+}
+// Адаптивне відео
+%responsiveVideo {
+	video,
+	iframe,
+	object,
+	embed {
+		aspect-ratio: 16 / 9;
+	}
+}
+// Відео як фон
+%videoBackground {
+	video,
+	iframe,
+	object,
+	embed {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		z-index: -100;
+		transform: translateX(-50%) translateY(-50%);
+		object-fit: cover;
+	}
+}
+// Сірий фільтр
+%grayfilter {
+	transition: all 0.3s ease 0s;
+	filter: grayscale(1);
+	@media (any-hover: hover) {
+		&:hover {
+			filter: grayscale(0);
+		}
+	}
+}
+// Скасувати виділення
+%noselect {
+	user-select: none;
+}
+// Дзеркальне відображення
+%mirror {
+	transform: scale(-1, 1);
+}
+// Плавний скролл
+%smoothscroll {
+	-webkit-overflow-scrolling: touch;
+}
+// Сховати скролл
+%hidescroll {
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+%button-primary {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: var(--theme-color);
+  border: 1px solid var(--theme-color);
+  display: inline-flex;
+  align-items: center;
+  line-height: normal;
+  white-space: nowrap;
+  padding: 20px 24px;
+  gap: 10px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  transition: all .6s;
+
+	@media screen and (min-width: 768px) {
+		&:hover {
+			background-color: #102039;
+			border-color: #102039;
+		}
+	}
+}
+
+%h1 {
+	font-size: calc(32px + 16 * (100vw / 1920));
+	font-weight: 600;
+}
+
+%h2 {
+	font-size: clamp(1.625rem, 1.25rem + 1.5vw, 2.375rem);
+  font-weight: 600;
+}
+
+%h3 {
+	font-size: clamp(1.25rem, 1.125rem + 0.75vw, 1.75rem);
+	font-weight: 600;
+}
+
+%h4 {
+	font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+	font-weight: 600;
+}
+
+%section-pretitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--theme-color);
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 800;
+  text-transform: uppercase;
+
+	span {
+		width: 40px;
+		height: 20px;
+		border: 2px solid var(--theme-color);
+		border-radius: 999px;
+		position: relative;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 4px;
+			background-color: var(--theme-color);
+			border-radius: 999px;
+		}
+	}
+}

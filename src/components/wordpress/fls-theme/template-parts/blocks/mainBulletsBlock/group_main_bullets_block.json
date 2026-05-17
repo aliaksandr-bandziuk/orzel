@@ -1,0 +1,77 @@
+{
+  "key": "group_main_bullets_block",
+  "title": "Main Bullets Block",
+  "fields": [
+    {
+      "key": "field_main_bullets_section_pretitle",
+      "label": "Pretitle",
+      "name": "section_pretitle",
+      "type": "text"
+    },
+    {
+      "key": "field_main_bullets_section_title",
+      "label": "Title",
+      "name": "section_title",
+      "type": "text"
+    },
+    {
+      "key": "field_main_bullets_section_text",
+      "label": "Text",
+      "name": "section_text",
+      "type": "textarea",
+      "rows": 4,
+      "new_lines": "br"
+    },
+    {
+      "key": "field_main_bullets_repeater",
+      "label": "Bullets",
+      "name": "bullets",
+      "type": "repeater",
+      "layout": "block",
+      "button_label": "Add Bullet",
+      "sub_fields": [
+        {
+          "key": "field_main_bullets_icon",
+          "label": "Icon",
+          "name": "icon",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "medium",
+          "library": "all"
+        },
+        {
+          "key": "field_main_bullets_title",
+          "label": "Title",
+          "name": "title",
+          "type": "text"
+        },
+        {
+          "key": "field_main_bullets_text",
+          "label": "Text",
+          "name": "text",
+          "type": "textarea",
+          "rows": 3,
+          "new_lines": "br"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/mainbulletsblock"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}

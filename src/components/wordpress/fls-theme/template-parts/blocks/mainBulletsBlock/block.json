@@ -1,0 +1,17 @@
+{
+  "name": "acf/mainbulletsblock",
+  "title": "Main Bullets Block",
+  "description": "A section with bullet cards for homepage advantages.",
+  "category": "design",
+  "keywords": ["bullets", "advantages", "features", "main"],
+  "icon": "grid-view",
+  "apiVersion": 2,
+  "acf": {
+    "renderTemplate": "./mainBulletsBlock.php",
+    "mode": "preview"
+  },
+  "supports": {
+    "align": false,
+    "anchor": true
+  }
+}

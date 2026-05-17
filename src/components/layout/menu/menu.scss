@@ -1,0 +1,267 @@
+.menu {
+
+	@media screen and (max-width: 980px) {
+		display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    // gap: 80px;		
+	}
+	// .menu__icon
+	&__icon {
+	}
+	// .menu__body
+	&__body {
+    @media (min-width: 981px) {
+      // margin: 0 auto;
+			margin-left: auto;
+    }
+		@media (max-width: 980px) {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			right: -100%;
+			top: 0;
+			overflow: auto;
+			padding: toRem(130) toRem(15) toRem(15) toRem(30);
+			transition: right 0.3s;
+
+			background: #12151A;
+      color: #fff;
+			&::before {
+				content: "";
+				position: fixed;
+				width: 100%;
+				height: toRem(70);
+				right: -100%;
+				top: 0;
+				transition: right 0.3s;
+				z-index: 2;
+			}
+			[data-fls-menu-open] & {
+				right: 0;
+				&::before {
+					right: 0;
+				}
+			}
+		}
+	}
+	// .menu__list
+	&__list {
+		display: flex;
+		gap: 30px;
+		@media (max-width: 980px) {
+			flex-direction: column;
+			gap: 25px;
+		}
+	}
+	// .menu__item
+	&__item {
+	}
+	// .menu__link
+&__link {
+	display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #12151A;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  transition: color 0.3s; /* Плавный переход цвета */
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px; /* Используйте toRem(2), если это миксин */
+    bottom: -3px;
+    left: 0;
+    transition: width 0.3s ease; /* Плавный переход ширины */
+  }
+
+  &:hover {
+    color: var(--theme-color);
+
+    &::before {
+       width: 100%; /* Подчеркивание растягивается на всю ширину */
+    }
+  }
+
+  @media (max-width: 980px) {
+    color: #fff;
+    /* Убираем эффекты ховера */
+    &:hover {
+        color: inherit; /* Цвет остается прежним */
+    }
+    &::before {
+        transition: none; /* Убираем анимацию */
+        width: 0; /* Оставляем подчеркивание скрытым */
+    }
+  }
+}
+
+	// menu__mob-btn
+	// &__mob-btn {
+	// 	display: none;
+
+	// 	@media screen and (max-width: 980px) {
+	// 		display: block;
+	// 	}
+	// }
+}
+
+.menu__sub-list {
+	position: absolute;
+	z-index: 1;
+	top: 22px;
+	left: -20px;
+	color: #667;
+	background-color: #fff;
+	background: none;
+  // box-shadow: 0 5px 12px rgba(0, 0, 0, .15);
+	padding-top: 20px;
+	// padding-left: 10px;
+	display: none;
+	flex-direction: column;
+	// gap: 10px;
+	// border-radius: 10px;
+	transition: all 0.2s ease;
+	width: 200px;
+	list-style: none;
+	overflow: hidden;
+
+	@media screen and (max-width: 980px){
+		display: flex;
+		gap: 10px;
+		background-color: inherit;
+		box-shadow: none;
+		position: static;
+		width: 100%;
+		border-radius: 0;
+		// padding: 0;
+	}
+}
+
+.menu__sub-list--open {
+	display: flex;
+}
+
+.menu__arrow {
+  transition: transform 0.3s ease; // добавляем анимацию поворота
+
+	@media screen and (max-width: 980px){
+		display: none;
+	}
+}
+
+.menu__arrow--rotated {
+  transform: rotate(180deg); // поворот на 180 градусов
+}
+
+.menu__sub-list li {
+	// margin: 0px 0px 10px 0px;
+}
+.menu__sub-list li:last-child {
+	margin: 0;
+}
+.menu__sub-link {
+	color: #000;
+	display: block;
+	transition: all 0.3s ease;
+	padding: 10px;
+  font-size: 16px;
+	font-weight: 400;
+  text-transform: none;
+	background-color: #fff;
+
+	&:hover {
+		color: var(--brand-subcolor);
+	}
+
+	&:hover {
+		color: #fff;
+		background-color: var(--brand-color);
+	}
+
+	@media screen and (max-width: 980px){
+		padding: 0;
+		font-size: 14px;
+		color: #fff;
+		background-color: unset;
+		width: fit-content;
+	}
+}
+
+.menu__has-submenu {
+	position: relative;
+
+	@media screen and (max-width: 980px){
+		flex-direction: column;
+		gap: 7px;
+	}
+}
+
+.burger-bg {
+
+	@media screen and (max-width: 980px) {
+    background: var(--brand-subcolor);
+    padding: 30px 20px;
+    position: relative;
+    z-index: 1;
+    right: -15px;
+	}
+}
+
+//Burger Icon
+.icon-menu {
+	display: none;
+	@media (max-width: 980px) {
+		display: block;
+		position: relative;
+		width: toRem(30);
+		height: toRem(18);
+		z-index: 5;
+		@media (any-hover: none) {
+			cursor: default;
+		}
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: toRem(2);
+			background-color: #fff;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - toRem(1));
+		}
+		[data-fls-menu-open] & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - toRem(1));
+				transform: rotate(-45deg);
+				background-color: #fff;
+			}
+			&::after {
+				bottom: calc(50% - toRem(1));
+				transform: rotate(45deg);
+				background-color: #fff;
+			}
+		}
+	}
+}

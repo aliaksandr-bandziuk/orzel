@@ -1,0 +1,209 @@
+{
+  "key": "group_orzel_footer",
+  "title": "Footer",
+  "fields": [
+    {
+      "key": "field_footer_logo",
+      "label": "Footer Logo",
+      "name": "footer_logo",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all"
+    },
+    {
+      "key": "field_footer_description",
+      "label": "Footer Description",
+      "name": "footer_description",
+      "type": "textarea",
+      "rows": 4,
+      "new_lines": "br"
+    },
+    {
+      "key": "field_footer_working_hours",
+      "label": "Working Hours",
+      "name": "footer_working_hours",
+      "type": "group",
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_working_hours_title",
+          "label": "Title",
+          "name": "title",
+          "type": "text"
+        },
+        {
+          "key": "field_footer_working_hours_text",
+          "label": "Text",
+          "name": "text",
+          "type": "textarea",
+          "rows": 3,
+          "new_lines": "br"
+        }
+      ]
+    },
+    {
+      "key": "field_footer_quick_links",
+      "label": "Quick Links",
+      "name": "footer_quick_links",
+      "type": "group",
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_quick_links_title",
+          "label": "Title",
+          "name": "title",
+          "type": "text"
+        },
+        {
+          "key": "field_footer_quick_links_items",
+          "label": "Items",
+          "name": "items",
+          "type": "repeater",
+          "layout": "table",
+          "button_label": "Add Link",
+          "sub_fields": [
+            {
+              "key": "field_footer_quick_link_label",
+              "label": "Label",
+              "name": "label",
+              "type": "text"
+            },
+            {
+              "key": "field_footer_quick_link_url",
+              "label": "Link",
+              "name": "url",
+              "type": "link",
+              "return_format": "array"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "field_footer_services",
+      "label": "Services",
+      "name": "footer_services",
+      "type": "group",
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_services_title",
+          "label": "Title",
+          "name": "title",
+          "type": "text"
+        },
+        {
+          "key": "field_footer_services_items",
+          "label": "Items",
+          "name": "items",
+          "type": "repeater",
+          "layout": "table",
+          "button_label": "Add Service Link",
+          "sub_fields": [
+            {
+              "key": "field_footer_service_label",
+              "label": "Label",
+              "name": "label",
+              "type": "text"
+            },
+            {
+              "key": "field_footer_service_url",
+              "label": "Link",
+              "name": "url",
+              "type": "link",
+              "return_format": "array"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "field_footer_gallery",
+      "label": "Gallery",
+      "name": "footer_gallery",
+      "type": "group",
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_gallery_title",
+          "label": "Title",
+          "name": "title",
+          "type": "text"
+        },
+        {
+          "key": "field_footer_gallery_images",
+          "label": "Images",
+          "name": "images",
+          "type": "gallery",
+          "return_format": "array",
+          "preview_size": "medium",
+          "library": "all",
+          "min": 0,
+          "max": 4,
+          "insert": "append"
+        }
+      ]
+    },
+    {
+      "key": "field_footer_bottom",
+      "label": "Footer Bottom",
+      "name": "footer_bottom",
+      "type": "group",
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_privacy_label",
+          "label": "Privacy Label",
+          "name": "privacy_label",
+          "type": "text"
+        },
+        {
+          "key": "field_footer_privacy_url",
+          "label": "Privacy URL",
+          "name": "privacy_url",
+          "type": "url"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "footer-pl"
+      }
+    ],
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "footer-en"
+      }
+    ],
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "footer-ru"
+      }
+    ],
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "footer-uk"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": [],
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}

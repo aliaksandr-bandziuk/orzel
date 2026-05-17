@@ -1,0 +1,67 @@
+{
+  "key": "group_working_process_block",
+  "title": "Working Process Block",
+  "fields": [
+    {
+      "key": "field_working_process_pretitle",
+      "label": "Pretitle",
+      "name": "pretitle",
+      "type": "text",
+      "instructions": "",
+      "required": 0
+    },
+    {
+      "key": "field_working_process_title",
+      "label": "Title",
+      "name": "title",
+      "type": "text",
+      "instructions": "",
+      "required": 0
+    },
+    {
+      "key": "field_working_process_steps",
+      "label": "Steps",
+      "name": "steps",
+      "type": "repeater",
+      "instructions": "Add exactly 4 steps",
+      "required": 0,
+      "min": 4,
+      "max": 4,
+      "layout": "block",
+      "button_label": "Add Step",
+      "sub_fields": [
+        {
+          "key": "field_working_process_item_title",
+          "label": "Step Title",
+          "name": "item_title",
+          "type": "text"
+        },
+        {
+          "key": "field_working_process_item_text",
+          "label": "Step Description",
+          "name": "item_text",
+          "type": "textarea",
+          "rows": 3
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/workingprocess"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}

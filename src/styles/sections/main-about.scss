@@ -1,0 +1,246 @@
+@use "@styles/includes/index.scss" as *;
+
+.about-remont-block {
+  padding: 60px 0;
+  background-color: #fff;
+  position: relative;
+  z-index: 2;
+
+  .about-remont-block__shape {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    // object-fit: cover;
+    // width: 100%;
+    z-index: 1;
+  }
+
+  &__container {
+    display: grid;
+    gap: 42px;
+  }
+
+  &__media {
+    position: relative;
+    max-width: 620px;
+    padding-left: 42px;
+    padding-bottom: 42px;
+  }
+
+  &__main-img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 1 / 0.78;
+    border-radius: 0 80px 0 0;
+  }
+
+  &__badge {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 140px;
+    background-color: var(--theme-color);
+    color: #fff;
+    z-index: 4;
+    padding: 20px 16px 14px;
+  }
+
+  &__badge-top {
+    display: flex;
+    gap: 14px;
+    min-height: 120px;
+  }
+
+  &__badge-top span {
+    font-size: 36px;
+    line-height: 1;
+    font-weight: 800;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  &__badge-top p {
+    margin: 0;
+    font-size: clamp(0.875rem, 0.75rem + 0.5vw, 1.125rem);
+    line-height: 1.5;
+    font-weight: 400;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  &__badge-icon {
+    margin-top: 18px;
+    background-color: #fff;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__badge-icon img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+  }
+
+  &__secondary {
+    display: none;
+  }
+
+  &__content {
+    max-width: 670px;
+  }
+
+  &__title {
+    margin: 18px 0 22px;
+    font-size: clamp(2rem, 1.55rem + 1.8vw, 3.2rem);
+    line-height: 1.18;
+    font-weight: 800;
+    color: #071c34;
+  }
+
+  &__text {
+    color: #6f7278;
+    font-size: 16px;
+    line-height: 1.75;
+    margin-bottom: 34px;
+  }
+
+  &__text p {
+    margin: 0;
+  }
+
+  &__features {
+    display: grid;
+    gap: 18px;
+    margin: 0 0 38px;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #071c34;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  &__features li span {
+    flex: 0 0 18px;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    border: 1px solid var(--theme-color);
+    border-radius: 50%;
+    position: relative;
+  }
+
+  &__features li span::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 6px;
+    height: 10px;
+    border-right: 2px solid var(--theme-color);
+    border-bottom: 2px solid var(--theme-color);
+    transform: rotate(45deg);
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 26px;
+    color: #071c34;
+  }
+}
+
+.button-primary {
+  @extend %button-primary;
+}
+
+@media screen and (min-width: 768px) {
+  .about-remont-block {
+    padding: 90px 0;
+
+    &__container {
+      grid-template-columns: 0.95fr 1fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    &__media {
+      max-width: 620px;
+      padding-left: 70px;
+      padding-bottom: 70px;
+      padding-right: 60px;
+    }
+
+    &__main-img {
+      aspect-ratio: 4/5;
+      border-radius: 0 110px 0 0;
+    }
+
+    &__badge {
+      left: 0;
+      bottom: 50%;
+      transform: translateY(50%);
+      width: 150px;
+
+      .about-remont-block__badge-top {
+        max-height: 250px;
+      }
+    }
+
+    &__secondary {
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: 40px;
+      width: 285px;
+      padding: 12px;
+      background-color: #fff;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+      z-index: 3;
+    }
+
+    &__secondary img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 1.2 / 1;
+      object-fit: cover;
+    }
+
+    &__features {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 44px;
+      row-gap: 20px;
+    }
+
+    &__bottom {
+      flex-direction: row;
+      align-items: center;
+      gap: 28px;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .about-remont-block {
+    &__media {
+      padding-left: 70px;
+      padding-right: 70px;
+    }
+
+    &__secondary {
+      right: 0;
+      width: 285px;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "acf/servicestabsblock",
+  "title": "Services Tabs Block",
+  "description": "A services section with tabs, images, text and buttons.",
+  "category": "design",
+  "keywords": ["services", "tabs", "remonty", "uslugi"],
+  "icon": "index-card",
+  "apiVersion": 2,
+  "acf": {
+    "renderTemplate": "./servicesTabsBlock.php",
+    "mode": "preview"
+  },
+  "supports": {
+    "anchor": true
+  }
+}

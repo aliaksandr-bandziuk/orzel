@@ -1,0 +1,16 @@
+{
+  "name": "acf/aboutremontblock",
+  "title": "About Remont Block",
+  "description": "About section with images, experience badge, features, CTA and phone button.",
+  "category": "design",
+  "keywords": ["about", "remont", "renovation"],
+  "icon": "admin-home",
+  "apiVersion": 2,
+  "acf": {
+    "renderTemplate": "./aboutRemontBlock.php",
+    "mode": "preview"
+  },
+  "supports": {
+    "anchor": true
+  }
+}

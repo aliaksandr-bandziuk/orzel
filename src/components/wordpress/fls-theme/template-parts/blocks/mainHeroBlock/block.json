@@ -1,0 +1,17 @@
+{
+  "name": "acf/mainheroblock",
+  "title": "Main Hero Block",
+  "description": "A block for the homepage to display the main hero block with a background image and content.",
+  "category": "design",
+  "keywords": [
+    "main block",
+    "hero block",
+    "homepage"
+  ],
+  "icon": "bell",
+  "apiVersion": 2,
+  "acf": {
+    "renderTemplate": "./mainHeroBlock.php",
+    "mode": "preview"
+  }
+}

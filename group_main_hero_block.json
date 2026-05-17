@@ -1,0 +1,79 @@
+{
+  "key": "group_main_hero_block",
+  "title": "Main Hero Block",
+  "fields": [
+    {
+      "key": "field_main_hero_background_image",
+      "label": "Background Image",
+      "name": "background_image",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all"
+    },
+    {
+      "key": "field_main_hero_pretitle",
+      "label": "Pretitle",
+      "name": "pretitle",
+      "type": "text"
+    },
+    {
+      "key": "field_main_hero_title",
+      "label": "Title",
+      "name": "title",
+      "type": "textarea",
+      "rows": 3,
+      "new_lines": "br"
+    },
+    {
+      "key": "field_main_hero_show_decor",
+      "label": "Show Decor",
+      "name": "show_decor",
+      "type": "true_false",
+      "ui": 1,
+      "default_value": 1
+    },
+    {
+      "key": "field_main_hero_services_text",
+      "label": "Services Button Text",
+      "name": "services_text",
+      "type": "text"
+    },
+    {
+      "key": "field_main_hero_services_url",
+      "label": "Services Button URL",
+      "name": "services_url",
+      "type": "url"
+    },
+    {
+      "key": "field_main_hero_popup_text",
+      "label": "Popup Button Text",
+      "name": "popup_text",
+      "type": "text"
+    },
+    {
+      "key": "field_main_hero_popup_link",
+      "label": "Popup Link",
+      "name": "popup_link",
+      "type": "text"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/mainheroblock"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}

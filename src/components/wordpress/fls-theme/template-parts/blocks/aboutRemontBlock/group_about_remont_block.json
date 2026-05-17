@@ -1,0 +1,113 @@
+{
+  "key": "group_about_remont_block",
+  "title": "About Remont Block",
+  "fields": [
+    {
+      "key": "field_about_pretitle",
+      "label": "Pretitle",
+      "name": "pretitle",
+      "type": "text"
+    },
+    {
+      "key": "field_about_title",
+      "label": "Title",
+      "name": "title",
+      "type": "text"
+    },
+    {
+      "key": "field_about_text",
+      "label": "Text",
+      "name": "text",
+      "type": "wysiwyg",
+      "tabs": "all",
+      "toolbar": "basic",
+      "media_upload": 0
+    },
+    {
+      "key": "field_about_main_image",
+      "label": "Main Image",
+      "name": "main_image",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all"
+    },
+    {
+      "key": "field_about_secondary_image",
+      "label": "Secondary Image",
+      "name": "secondary_image",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all"
+    },
+    {
+      "key": "field_about_experience_number",
+      "label": "Experience Number",
+      "name": "experience_number",
+      "type": "text",
+      "default_value": "10+"
+    },
+    {
+      "key": "field_about_experience_text",
+      "label": "Experience Text",
+      "name": "experience_text",
+      "type": "text",
+      "default_value": "World Best Roofing Award Got"
+    },
+    {
+      "key": "field_about_features",
+      "label": "Features",
+      "name": "features",
+      "type": "repeater",
+      "layout": "table",
+      "button_label": "Add Feature",
+      "sub_fields": [
+        {
+          "key": "field_about_feature_text",
+          "label": "Text",
+          "name": "text",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "key": "field_about_button_text",
+      "label": "Button Text",
+      "name": "button_text",
+      "type": "text",
+      "default_value": "ABOUT US"
+    },
+    {
+      "key": "field_about_button_link",
+      "label": "Button Link",
+      "name": "button_link",
+      "type": "url"
+    },
+    {
+      "key": "field_about_phone_number",
+      "label": "Phone Number",
+      "name": "phone_number",
+      "type": "text",
+      "default_value": "517 351 391"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/aboutremontblock"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}
