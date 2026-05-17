@@ -1,0 +1,17 @@
+{
+  "name": "acf/finalcontactblock",
+  "title": "Final Contact Block",
+  "description": "Sekcja kontaktowa z formularzem.",
+  "category": "theme",
+  "icon": "email",
+  "keywords": ["contact", "map", "form"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "finalContactBlock.php"
+  },
+  "supports": {
+    "anchor": true,
+    "align": false,
+    "jsx": false
+  }
+}

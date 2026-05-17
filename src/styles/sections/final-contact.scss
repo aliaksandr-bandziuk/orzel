@@ -16,15 +16,17 @@
   &__inner {
     padding: 30px 22px;
     background: var(--brand-color);
-    border-radius: 4px;
+    border-radius: 2px;
+    text-align: center;
   }
 
   &__description {
     font-size: 16px;
-    font-weight: 300;
-    line-height: 1.2;
+    font-weight: 400;
+    line-height: 1.5;
     color: #fff;
-    max-width: 400px;
+    max-width: 850px;
+    margin: 0 auto;
   }
 }
 

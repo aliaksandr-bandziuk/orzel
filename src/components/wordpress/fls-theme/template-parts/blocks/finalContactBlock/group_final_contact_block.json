@@ -1,0 +1,63 @@
+[
+  {
+    "key": "group_final_contact_block",
+    "title": "Final Contact Block",
+    "fields": [
+      {
+        "key": "field_final_contact_title",
+        "label": "Title",
+        "name": "title",
+        "type": "text",
+        "instructions": "Main heading of the contact block",
+        "required": 0,
+        "wrapper": {
+          "width": "100"
+        },
+        "default_value": "Skontaktuj się z nami"
+      },
+      {
+        "key": "field_final_contact_description",
+        "label": "Description",
+        "name": "description",
+        "type": "textarea",
+        "instructions": "Short text below heading",
+        "required": 0,
+        "wrapper": {
+          "width": "100"
+        },
+        "rows": 4,
+        "default_value": "Masz pytanie lub chcesz otrzymać wycenę? Wypełnij formularz, a odpowiemy tak szybko, jak to możliwe."
+      },
+      {
+        "key": "field_final_contact_button_text",
+        "label": "Button Text",
+        "name": "button_text",
+        "type": "text",
+        "instructions": "Submit button text",
+        "required": 0,
+        "wrapper": {
+          "width": "50"
+        },
+        "default_value": "Wyślij formularz"
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "block",
+          "operator": "==",
+          "value": "acf/finalcontactblock"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+  }
+]
