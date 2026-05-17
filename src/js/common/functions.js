@@ -270,3 +270,10 @@ export function formatDate(date, sepp) {
 import "../custom/headerScroll.js";
 import "../custom/toggleSubMenu.js";
 import "../custom/dropdownLanguage.js";
+window.addEventListener("load", () => {
+	if (document.querySelector(".counter__value")) {
+		import("../custom/gigitsCounter.js").then(module => {
+			module.initDigitsCounter();
+		});
+	}
+}, { once: true });

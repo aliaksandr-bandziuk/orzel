@@ -294,6 +294,7 @@ function orzel_register_acf_blocks()
 		register_block_type(get_template_directory() . "/template-parts/blocks/workingProcess/block.json");
 		register_block_type(get_template_directory() . "/template-parts/blocks/reviewsBlock/block.json");
 		register_block_type(get_template_directory() . "/template-parts/blocks/finalContactBlock/block.json");
+		register_block_type(get_template_directory() . "/template-parts/blocks/digitsBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/sliderStandardBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/galleryCustomBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/ctaLiteBlock/block.json");
@@ -307,7 +308,6 @@ function orzel_register_acf_blocks()
 		// register_block_type(get_template_directory() . "/template-parts/blocks/sliderFullBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/shortContactBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/teamBlock/block.json");
-		// register_block_type(get_template_directory() . "/template-parts/blocks/digitsBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/priceCalculatorBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/contentTabsBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/allContactsBlock/block.json");

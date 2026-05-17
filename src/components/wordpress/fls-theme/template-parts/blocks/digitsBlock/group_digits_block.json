@@ -1,0 +1,83 @@
+{
+  "key": "group_digits_block",
+  "title": "Digits Block",
+  "fields": [
+    {
+      "key": "field_digits_pretitle",
+      "label": "Pretitle",
+      "name": "pretitle",
+      "type": "text"
+    },
+    {
+      "key": "field_digits_title",
+      "label": "Title",
+      "name": "title",
+      "type": "text"
+    },
+    {
+      "key": "field_digit_items",
+      "label": "Digit Items",
+      "name": "digit_items",
+      "type": "repeater",
+      "layout": "block",
+      "button_label": "Add Item",
+      "sub_fields": [
+        {
+          "key": "field_digit_icon",
+          "label": "Digit Icon",
+          "name": "digit_icon",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "medium",
+          "library": "all"
+        },
+        {
+          "key": "field_counter_value",
+          "label": "Counter Value",
+          "name": "counter_value",
+          "type": "text",
+          "instructions": "Например: 120"
+        },
+        {
+          "key": "field_counter_symbol",
+          "label": "Counter Symbol",
+          "name": "counter_symbol",
+          "type": "text",
+          "instructions": "Например: +, %, m²"
+        },
+        {
+          "key": "field_digit_title",
+          "label": "Digit Title",
+          "name": "digit_title",
+          "type": "text"
+        },
+        {
+          "key": "field_digit_text",
+          "label": "Digit Text",
+          "name": "digit_text",
+          "type": "textarea",
+          "rows": 3,
+          "new_lines": "br"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/digitsblock"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}
