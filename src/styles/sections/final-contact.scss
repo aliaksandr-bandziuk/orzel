@@ -15,9 +15,11 @@
 
   &__inner {
     padding: 30px 22px;
-    background: var(--brand-color);
+    background: rgba(16, 32, 57, 0.95);
     border-radius: 2px;
     text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   &__description {
