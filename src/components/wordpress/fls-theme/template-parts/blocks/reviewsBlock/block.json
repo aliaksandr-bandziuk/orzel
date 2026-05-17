@@ -1,0 +1,17 @@
+{
+  "name": "acf/reviewsblock",
+  "title": "Reviews Block",
+  "description": "Sekcja opinii klientów z galerią zdjęć.",
+  "category": "widgets",
+  "icon": "format-status",
+  "keywords": ["reviews", "opinie", "testimonials", "slider"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "reviewsBlock.php"
+  },
+  "supports": {
+    "anchor": true,
+    "align": false,
+    "jsx": false
+  }
+}

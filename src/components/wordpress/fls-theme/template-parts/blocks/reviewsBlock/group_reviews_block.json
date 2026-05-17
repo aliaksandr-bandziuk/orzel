@@ -1,0 +1,88 @@
+{
+  "key": "group_reviews_block",
+  "title": "Reviews Block",
+  "fields": [
+    {
+      "key": "field_reviews_shape_image",
+      "label": "Shape Image",
+      "name": "shape_image",
+      "type": "image",
+      "instructions": "Optional decorative shape image. If empty, default image will be used.",
+      "required": 0,
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all"
+    },
+    {
+      "key": "field_reviews_reviews_list",
+      "label": "Reviews List",
+      "name": "reviews_list",
+      "type": "repeater",
+      "instructions": "",
+      "required": 1,
+      "min": 1,
+      "layout": "block",
+      "button_label": "Add Review",
+      "sub_fields": [
+        {
+          "key": "field_reviews_text",
+          "label": "Review Text",
+          "name": "text",
+          "type": "wysiwyg",
+          "instructions": "",
+          "required": 0,
+          "tabs": "all",
+          "toolbar": "basic",
+          "media_upload": 0,
+          "delay": 0
+        },
+        {
+          "key": "field_reviews_name",
+          "label": "Client Name",
+          "name": "name",
+          "type": "text",
+          "instructions": "",
+          "required": 0
+        },
+        {
+          "key": "field_reviews_position",
+          "label": "Client Position / Label",
+          "name": "position",
+          "type": "text",
+          "instructions": "For example: Opinia klienta, Właściciel mieszkania, Inwestor.",
+          "required": 0
+        },
+        {
+          "key": "field_reviews_gallery",
+          "label": "Review Gallery",
+          "name": "gallery",
+          "type": "gallery",
+          "instructions": "Images shown on the right side for this review.",
+          "required": 0,
+          "return_format": "array",
+          "preview_size": "medium",
+          "insert": "append",
+          "library": "all"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/reviewsblock"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}
