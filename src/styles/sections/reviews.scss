@@ -5,12 +5,10 @@
 
   &__shape {
     position: absolute;
-    top: 50%;
+    top: 0;
     left: 0;
-    transform: translateY(-50%);
     max-width: 900px;
     z-index: 2;
-    opacity: 0.1;
     pointer-events: none;
   }
 
@@ -136,7 +134,7 @@
 
   &__position {
     margin-top: 6px;
-    color: var(--theme-color);
+    color: #a9a9a9;
     font-weight: 500;
     font-size: 15px;
     line-height: 1.2;
