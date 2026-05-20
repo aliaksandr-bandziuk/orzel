@@ -1,0 +1,21 @@
+{
+  "name": "acf/faqblock",
+  "title": "FAQ Block",
+  "description": "Sekcja FAQ z akordeonem opartym o spollers.",
+  "category": "formatting",
+  "icon": "editor-help",
+  "keywords": ["faq", "accordion", "questions", "answers"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "faqBlock.php"
+  },
+  "supports": {
+    "anchor": true,
+    "align": false,
+    "jsx": false,
+    "spacing": {
+      "margin": ["top", "bottom"],
+      "padding": ["top", "bottom"]
+    }
+  }
+}

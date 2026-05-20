@@ -1,0 +1,21 @@
+{
+  "name": "acf/shortcontactblock",
+  "title": "Short Contact Block",
+  "description": "Kompaktowy blok CTA z krótkim formularzem kontaktowym (telefon).",
+  "category": "theme",
+  "icon": "phone",
+  "keywords": ["contact", "cta", "phone", "form", "felgilab"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "shortContactBlock.php"
+  },
+  "supports": {
+    "anchor": true,
+    "align": false,
+    "jsx": false,
+    "spacing": {
+      "margin": ["top", "bottom"],
+      "padding": ["top", "bottom"]
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "key": "group_short_contact_block",
+  "title": "Short Contact Block",
+  "fields": [
+    {
+      "key": "field_short_contact_title",
+      "label": "Title",
+      "name": "title",
+      "type": "text",
+      "instructions": "Основной заголовок блока",
+      "required": 0,
+      "default_value": "Chcesz taki efekt? Skontaktuj się z nami"
+    },
+    {
+      "key": "field_short_contact_description",
+      "label": "Description",
+      "name": "description",
+      "type": "textarea",
+      "instructions": "Краткое описание под заголовком",
+      "required": 0,
+      "rows": 3,
+      "new_lines": "br",
+      "default_value": "Skontaktujemy się z Tobą od razu po otrzymaniu wiadomości."
+    },
+    {
+      "key": "field_short_contact_button",
+      "label": "Button Text",
+      "name": "button_text",
+      "type": "text",
+      "instructions": "Текст кнопки отправки",
+      "required": 0,
+      "default_value": "Oddzwonić"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/shortcontactblock"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}

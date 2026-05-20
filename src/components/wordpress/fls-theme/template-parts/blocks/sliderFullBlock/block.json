@@ -1,0 +1,27 @@
+{
+  "name": "acf/sliderfullblock",
+  "title": "Slider Full Block",
+  "description": "Full width image slider with thumbnails.",
+  "category": "design",
+  "keywords": [
+    "slider",
+    "gallery",
+    "carousel"
+  ],
+  "icon": "images-alt",
+  "apiVersion": 2,
+  "acf": {
+    "renderTemplate": "./sliderFullBlock.php",
+    "mode": "preview"
+  },
+  "supports": {
+    "anchor": true,
+    "align": ["wide", "full"],
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "style": [],
+  "script": []
+}
