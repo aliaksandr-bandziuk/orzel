@@ -758,7 +758,10 @@ function orzel_register_services_cpt()
 		'show_in_rest'        => true,
 		'menu_icon'           => 'dashicons-admin-tools',
 		'menu_position'       => 23,
-		'rewrite'             => false,
+		'rewrite' 						=> array(
+			'slug'       => 'uslugi',
+			'with_front' => false,
+		),
 	);
 
 	register_post_type('services', $args);

@@ -212,7 +212,7 @@
 									</button>
 									<a href="tel:+48517351391" class="header-phone-button">
 										<span class="header-phone-button__icon">
-											<img src="wp-content/uploads/2026/05/phone-call.png" alt="Phone">
+											<img src="/wp-content/uploads/2026/05/phone-call.png" alt="Phone">
 										</span>
 										<div class="header-phone-button__text">
 											<p>
