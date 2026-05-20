@@ -16,26 +16,27 @@ $portfolio_ids = get_posts([
   'lang'             => $current_lang,
 ]);
 
-$portfolio_brands = [];
+$property_types = [];
 
 if (!empty($portfolio_ids)) {
-  $portfolio_brands_raw = wp_get_object_terms($portfolio_ids, 'car_brand', [
+  $property_types_raw = wp_get_object_terms($portfolio_ids, 'property_type', [
     'orderby' => 'name',
     'order'   => 'ASC',
   ]);
 
-  if (!is_wp_error($portfolio_brands_raw) && !empty($portfolio_brands_raw)) {
-    $unique_brands = [];
+  if (!is_wp_error($property_types_raw) && !empty($property_types_raw)) {
+    $unique_types = [];
 
-    foreach ($portfolio_brands_raw as $brand) {
-      $unique_brands[$brand->term_id] = $brand;
+    foreach ($property_types_raw as $type) {
+      $unique_types[$type->term_id] = $type;
     }
 
-    $portfolio_brands = array_values($unique_brands);
+    $property_types = array_values($unique_types);
   }
 }
 
-$selected_brand = isset($_GET['portfolio_brand']) ? sanitize_text_field($_GET['portfolio_brand']) : 'all';
+$selected_property_type = isset($_GET['property_type']) ? sanitize_text_field($_GET['property_type']) : 'all';
+
 $posts_per_page = 8;
 
 // Тексты интерфейса
@@ -120,18 +121,18 @@ switch ($current_lang) {
         <nav class="portfolio-tabs__navigation">
           <button
             type="button"
-            class="portfolio-tab tab-custom <?php echo ($selected_brand === 'all') ? '_tab-active' : ''; ?>"
-            data-brand="all">
+            class="portfolio-tab tab-custom <?php echo ($selected_property_type === 'all') ? '_tab-active' : ''; ?>"
+            data-property-type="all">
             <?php echo esc_html($all_label); ?>
           </button>
 
-          <?php if (!empty($portfolio_brands)) : ?>
-            <?php foreach ($portfolio_brands as $brand) : ?>
+          <?php if (!empty($property_types)) : ?>
+            <?php foreach ($property_types as $type) : ?>
               <button
                 type="button"
-                class="portfolio-tab tab-custom <?php echo ($selected_brand === $brand->slug) ? '_tab-active' : ''; ?>"
-                data-brand="<?php echo esc_attr($brand->slug); ?>">
-                <?php echo esc_html($brand->name); ?>
+                class="portfolio-tab tab-custom <?php echo ($selected_property_type === $type->slug) ? '_tab-active' : ''; ?>"
+                data-property-type="<?php echo esc_attr($type->slug); ?>">
+                <?php echo esc_html($type->name); ?>
               </button>
             <?php endforeach; ?>
           <?php endif; ?>
@@ -154,12 +155,12 @@ switch ($current_lang) {
               $args['lang'] = $current_lang;
             }
 
-            if ('all' !== $selected_brand) {
+            if ('all' !== $selected_property_type) {
               $args['tax_query'] = [
                 [
-                  'taxonomy' => 'car_brand',
+                  'taxonomy' => 'property_type',
                   'field'    => 'slug',
-                  'terms'    => $selected_brand,
+                  'terms'    => $selected_property_type,
                 ],
               ];
             }
@@ -177,25 +178,22 @@ switch ($current_lang) {
                         <p class="portfolio-card__title"><?php the_title(); ?></p>
 
                         <?php
-                        $car_name     = get_post_meta(get_the_ID(), '_portfolio_car_name', true);
-                        $rim_diameter = get_post_meta(get_the_ID(), '_portfolio_rim_diameter', true);
-                        $rim_color    = get_post_meta(get_the_ID(), '_portfolio_rim_color', true);
-                        $service_name = get_post_meta(get_the_ID(), '_portfolio_service_name', true);
+                        $building_type = get_post_meta(get_the_ID(), '_portfolio_building_type', true);
+                        $duration      = get_post_meta(get_the_ID(), '_portfolio_duration', true);
+                        $service_name  = get_post_meta(get_the_ID(), '_portfolio_service_name', true);
                         ?>
 
                         <div class="portfolio-card__metas">
-                          <?php if ($car_name) : ?>
-                            <div class="portfolio-card__meta"><?php echo esc_html($car_name); ?></div>
+                          <?php if ($building_type) : ?>
+                            <div class="portfolio-card__meta"><?php echo esc_html($building_type); ?></div>
+                          <?php endif; ?>
+
+                          <?php if ($duration) : ?>
+                            <div class="portfolio-card__meta"><?php echo esc_html($duration); ?></div>
                           <?php endif; ?>
 
                           <?php if ($service_name) : ?>
-                            <div class="portfolio-card__meta"><?php echo esc_html($service_name); ?></div>
-                          <?php endif; ?>
-
-                          <?php if ($rim_diameter || $rim_color) : ?>
-                            <div class="portfolio-card__meta">
-                              <?php echo esc_html(trim($rim_diameter . '", ' . $rim_color)); ?>
-                            </div>
+                            <div class="portfolio-card__meta"><?php echo esc_html($service_name); ?> m²</div>
                           <?php endif; ?>
                         </div>
 
@@ -263,7 +261,7 @@ switch ($current_lang) {
     const loadMoreBtn = document.getElementById('load-more');
     const ajaxUrl = "<?php echo esc_url(admin_url('admin-ajax.php')); ?>";
     const currentLang = "<?php echo esc_js($current_lang); ?>";
-    let currentBrand = "<?php echo esc_js($selected_brand); ?>";
+    let currentPropertyType = "<?php echo esc_js($selected_property_type); ?>";
     let paged = 1;
 
     tabs.forEach(function(tab) {
@@ -273,12 +271,12 @@ switch ($current_lang) {
         tabs.forEach(t => t.classList.remove('_tab-active'));
         tab.classList.add('_tab-active');
 
-        currentBrand = tab.getAttribute('data-brand');
+        currentPropertyType = tab.getAttribute('data-property-type');
         paged = 1;
 
         const data = new URLSearchParams();
         data.append('action', 'filter_portfolio');
-        data.append('portfolio_brand', currentBrand);
+        data.append('portfolio_property_type', currentPropertyType);
         data.append('paged', paged);
         data.append('lang', currentLang);
 
@@ -321,7 +319,7 @@ switch ($current_lang) {
 
         const data = new URLSearchParams();
         data.append('action', 'filter_portfolio');
-        data.append('portfolio_brand', currentBrand);
+        data.append('portfolio_property_type', currentPropertyType);
         data.append('paged', paged);
         data.append('lang', currentLang);
 

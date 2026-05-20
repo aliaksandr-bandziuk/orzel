@@ -1,0 +1,82 @@
+{
+  "key": "group_before_after_block",
+  "title": "Before After Block",
+  "fields": [
+    {
+      "key": "field_before_after_pretitle",
+      "label": "Pretitle",
+      "name": "pretitle",
+      "type": "text",
+      "instructions": "Небольшой текст над заголовком",
+      "required": 0
+    },
+    {
+      "key": "field_before_after_title",
+      "label": "Title",
+      "name": "title",
+      "type": "text",
+      "instructions": "Основной заголовок блока",
+      "required": 0
+    },
+    {
+      "key": "field_before_after_before_image",
+      "label": "Before Image",
+      "name": "before_image",
+      "type": "image",
+      "instructions": "Изображение до ремонта",
+      "required": 1,
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all",
+      "mime_types": "jpg,jpeg,png,webp"
+    },
+    {
+      "key": "field_before_after_after_image",
+      "label": "After Image",
+      "name": "after_image",
+      "type": "image",
+      "instructions": "Изображение после ремонта",
+      "required": 1,
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all",
+      "mime_types": "jpg,jpeg,png,webp"
+    },
+    {
+      "key": "field_before_after_before_label",
+      "label": "Before Label",
+      "name": "before_label",
+      "type": "text",
+      "instructions": "Подпись для изображения до",
+      "required": 0,
+      "default_value": "Before"
+    },
+    {
+      "key": "field_before_after_after_label",
+      "label": "After Label",
+      "name": "after_label",
+      "type": "text",
+      "instructions": "Подпись для изображения после",
+      "required": 0,
+      "default_value": "After"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/beforeafterblock"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}

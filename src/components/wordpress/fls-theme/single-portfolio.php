@@ -51,108 +51,78 @@ $current_lang = pll_current_language();
       <?php
       $current_lang = function_exists('pll_current_language') ? pll_current_language() : 'pl';
 
-      // Переводы меток
       switch ($current_lang) {
         case 'en':
-          $car_label          = 'Car';
-          $diameter_label     = 'Wheel diameter';
-          $color_label        = 'Color';
-          $service_label      = 'Service';
-          $similar_title      = 'Similar topics';
-          $read_more_text     = 'Read more';
-          $no_image_alt       = 'Preview image';
-          $effekt_label       = 'Effect';
+          $building_type_label = 'Building type';
+          $duration_label      = 'Duration';
+          $square_label        = 'Area';
+          $effekt_label        = 'Result';
           break;
 
         case 'ru':
-          $car_label          = 'Автомобиль';
-          $diameter_label     = 'Диаметр диска';
-          $color_label        = 'Цвет';
-          $service_label      = 'Услуга';
-          $similar_title      = 'Похожие материалы';
-          $read_more_text     = 'Читать далее';
-          $no_image_alt       = 'Изображение превью';
-          $effekt_label       = 'Эффект';
+          $building_type_label = 'Тип объекта';
+          $duration_label      = 'Срок работ';
+          $square_label        = 'Площадь';
+          $effekt_label        = 'Результат';
           break;
 
         case 'uk':
-          $car_label          = 'Автомобіль';
-          $diameter_label     = 'Діаметр диска';
-          $color_label        = 'Колір';
-          $service_label      = 'Послуга';
-          $similar_title      = 'Схожі матеріали';
-          $read_more_text     = 'Читати далі';
-          $no_image_alt       = 'Зображення прев’ю';
-          $effekt_label       = 'Ефект';
+          $building_type_label = 'Тип об’єкта';
+          $duration_label      = 'Термін робіт';
+          $square_label        = 'Площа';
+          $effekt_label        = 'Результат';
           break;
 
         case 'pl':
         default:
-          $car_label          = 'Samochód';
-          $diameter_label     = 'Średnica felgi';
-          $color_label        = 'Kolor';
-          $service_label      = 'Usługa';
-          $similar_title      = 'Podobne tematy';
-          $read_more_text     = 'Czytaj więcej';
-          $no_image_alt       = 'Miniatura';
-          $effekt_label       = 'Efekt';
+          $building_type_label = 'Rodzaj obiektu';
+          $duration_label      = 'Czas realizacji';
+          $square_label        = 'Powierzchnia';
+          $effekt_label        = 'Efekt';
           break;
       }
 
-      // Получаем новые метаполя
-      $car_name     = trim(get_post_meta(get_the_ID(), '_portfolio_car_name', true));
-      $rim_diameter = trim(get_post_meta(get_the_ID(), '_portfolio_rim_diameter', true));
-      $rim_color    = trim(get_post_meta(get_the_ID(), '_portfolio_rim_color', true));
-      $service_name = trim(get_post_meta(get_the_ID(), '_portfolio_service_name', true));
+      $building_type = trim(get_post_meta(get_the_ID(), '_portfolio_building_type', true));
+      $duration      = trim(get_post_meta(get_the_ID(), '_portfolio_duration', true));
+      $square        = trim(get_post_meta(get_the_ID(), '_portfolio_service_name', true));
 
-      if ($car_name || $rim_diameter || $rim_color || $service_name) :
+      if ($building_type || $duration || $square) :
       ?>
-
-
         <div class="portfolio-data__wrapper mb60">
-          <?php if ($car_name) : ?>
+
+          <?php if ($building_type) : ?>
             <div class="portfolio-bullet">
               <div class="portfolio-bullet__top">
-                <p><?php echo esc_html($car_label); ?></p>
+                <p><?php echo esc_html($building_type_label); ?></p>
               </div>
               <div class="portfolio-bullet__bottom">
-                <p><?php echo esc_html($car_name); ?></p>
+                <p><?php echo esc_html($building_type); ?></p>
               </div>
             </div>
           <?php endif; ?>
 
-          <?php if ($rim_diameter) : ?>
+          <?php if ($duration) : ?>
             <div class="portfolio-bullet">
               <div class="portfolio-bullet__top">
-                <p><?php echo esc_html($diameter_label); ?></p>
+                <p><?php echo esc_html($duration_label); ?></p>
               </div>
               <div class="portfolio-bullet__bottom">
-                <p><?php echo esc_html($rim_diameter); ?></p>
+                <p><?php echo esc_html($duration); ?></p>
               </div>
             </div>
           <?php endif; ?>
 
-          <?php if ($rim_color) : ?>
+          <?php if ($square) : ?>
             <div class="portfolio-bullet">
               <div class="portfolio-bullet__top">
-                <p><?php echo esc_html($color_label); ?></p>
+                <p><?php echo esc_html($square_label); ?> m²</p>
               </div>
               <div class="portfolio-bullet__bottom">
-                <p><?php echo esc_html($rim_color); ?></p>
+                <p><?php echo esc_html($square); ?></p>
               </div>
             </div>
           <?php endif; ?>
 
-          <?php if ($service_name) : ?>
-            <div class="portfolio-bullet">
-              <div class="portfolio-bullet__top">
-                <p><?php echo esc_html($service_label); ?></p>
-              </div>
-              <div class="portfolio-bullet__bottom">
-                <p><?php echo esc_html($service_name); ?></p>
-              </div>
-            </div>
-          <?php endif; ?>
         </div>
       <?php endif; ?>
 
@@ -172,7 +142,7 @@ $current_lang = pll_current_language();
   <?php endwhile; ?>
 
   <!-- Похожие работы -->
-  <section class="blog-section mb50">
+  <section class="blog-section mb50 mt50">
     <div class="blog-section__container">
       <div class="block-intro">
         <div class="block-intro__wrapper">

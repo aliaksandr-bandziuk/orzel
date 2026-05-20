@@ -1,30 +1,50 @@
 [data-fls-beforeafter] {
 	position: relative;
+	overflow: hidden;
+	aspect-ratio: 1 / 1;
+	max-width: 800px;
+	margin: 0 auto;
+	container-type: inline-size;
 }
+
 [data-fls-beforeafter-before],
 [data-fls-beforeafter-after] {
-	img {
-		user-select: none;
-	}
-}
-[data-fls-beforeafter-before] {
-	img {
-		width: 100%;
-	}
-}
-[data-fls-beforeafter-after] {
 	position: absolute;
-	width: 50%;
-	height: 100%;
 	top: 0;
-	right: 0;
-	overflow: hidden;
+	height: 100%;
+}
+
+[data-fls-beforeafter-before] {
+	left: 0;
+	width: 100%;
+	z-index: 1;
+
 	img {
-		max-width: none;
+		display: block;
+		width: 100%;
 		height: 100%;
+		user-select: none;
+		pointer-events: none;
+		object-fit: cover;
+	}
+}
+
+[data-fls-beforeafter-after] {
+	right: 0;
+	width: 50%;
+	overflow: hidden;
+	z-index: 2;
+
+	img {
 		position: absolute;
 		top: 0;
 		right: 0;
+		width: 100cqw;
+		height: 100%;
+		max-width: none;
+		object-fit: cover;
+		user-select: none;
+		pointer-events: none;
 	}
 }
 [data-fls-beforeafter-arrow] {
@@ -35,7 +55,7 @@
 	height: 100%;
 	width: 0.188rem;
 	z-index: 2;
-	background-color: #7a956b;
+	background-color: var(--theme-color);
 	&::before,
 	&::after {
 		content: "";
@@ -43,5 +63,70 @@
 	&::before {
 	}
 	&::after {
+	}
+}
+
+[data-fls-beforeafter-arrow] {
+	cursor: grab;
+	position: absolute;
+	left: 50%;
+	top: 0;
+	height: 100%;
+	width: 0.188rem;
+	z-index: 2;
+	background-color: var(--theme-color);
+
+	&:active {
+		cursor: grabbing;
+	}
+
+	// === HANDLE ===
+	.before-after__handle {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 56px;
+		height: 56px;
+		border-radius: 50%;
+		background-color: var(--theme-color);
+		border: 3px solid #fff;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+		// стрелки
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			width: 10px;
+			height: 10px;
+			border-top: 2px solid #fff;
+			border-right: 2px solid #fff;
+		}
+
+		// левая стрелка
+		&::before {
+			left: 14px;
+			transform: translateY(-50%) rotate(225deg);
+		}
+
+		// правая стрелка
+		&::after {
+			right: 14px;
+			transform: translateY(-50%) rotate(45deg);
+		}
+	}
+
+	// hover эффект
+	@media (any-hover: hover) {
+		&:hover .before-after__handle {
+			transform: translate(-50%, -50%) scale(1.08);
+			box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+		}
 	}
 }

@@ -1,0 +1,22 @@
+{
+  "name": "acf/beforeafterblock",
+  "title": "Before / After",
+  "description": "A block to compare two images with a draggable slider.",
+  "category": "design",
+  "icon": "image-flip-horizontal",
+  "keywords": ["before", "after", "comparison", "gallery"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "beforeAfterBlock.php"
+  },
+  "supports": {
+    "anchor": true,
+    "align": ["wide", "full"],
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "style": [],
+  "script": []
+}

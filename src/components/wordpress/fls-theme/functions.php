@@ -298,6 +298,7 @@ function orzel_register_acf_blocks()
 		register_block_type(get_template_directory() . "/template-parts/blocks/sliderFullBlock/block.json");
 		register_block_type(get_template_directory() . "/template-parts/blocks/shortContactBlock/block.json");
 		register_block_type(get_template_directory() . "/template-parts/blocks/faqBlock/block.json");
+		register_block_type(get_template_directory() . "/template-parts/blocks/beforeAfterBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/sliderStandardBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/galleryCustomBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/ctaLiteBlock/block.json");
@@ -306,7 +307,6 @@ function orzel_register_acf_blocks()
 		// register_block_type(get_template_directory() . "/template-parts/blocks/reviewsBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/brandsMarqueeBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/comparisonBlock/block.json");
-		// register_block_type(get_template_directory() . "/template-parts/blocks/beforeAfterBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/teamBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/priceCalculatorBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/contentTabsBlock/block.json");
@@ -377,6 +377,46 @@ function orzel_register_portfolio_cpt()
 }
 // cpt portfolio end
 
+// portfolio property type taxonomy
+add_action('init', 'orzel_register_property_type_taxonomy', 0);
+
+function orzel_register_property_type_taxonomy()
+{
+	$labels = array(
+		'name'          => __('Property Types', 'fls'),
+		'singular_name' => __('Property Type', 'fls'),
+		'menu_name'     => __('Property Types', 'fls'),
+		'all_items'     => __('All Property Types', 'fls'),
+		'edit_item'     => __('Edit Property Type', 'fls'),
+		'update_item'   => __('Update Property Type', 'fls'),
+		'add_new_item'  => __('Add New Property Type', 'fls'),
+		'new_item_name' => __('New Property Type Name', 'fls'),
+	);
+
+	$args = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array(
+			'slug'       => 'property-type',
+			'with_front' => false,
+		),
+		'show_in_rest'      => true,
+	);
+
+	register_taxonomy('property_type', array('portfolio'), $args);
+}
+// portfolio property type taxonomy end
+
+function orzel_add_property_type_taxonomy_to_polylang($taxonomies)
+{
+	$taxonomies[] = 'property_type';
+	return $taxonomies;
+}
+add_filter('pll_get_taxonomies', 'orzel_add_property_type_taxonomy_to_polylang');
+
 // add portfolio to polylang
 function orzel_add_portfolio_to_polylang($types)
 {
@@ -420,8 +460,8 @@ function orzel_render_portfolio_data_metabox($post)
 	</p>
 
 	<p>
-		<label for="portfolio_service_name"><strong>Usługa:</strong></label><br>
-		<input type="text" name="portfolio_service_name" id="portfolio_service_name" value="<?php echo esc_attr($service_name); ?>" style="width:100%;" placeholder="np. Renowacja">
+		<label for="portfolio_service_name"><strong>Kwadrat:</strong></label><br>
+		<input type="text" name="portfolio_service_name" id="portfolio_service_name" value="<?php echo esc_attr($service_name); ?>" style="width:100%;" placeholder="np. 120m²">
 	</p>
 	<?php
 }
