@@ -36,7 +36,7 @@
 						<div class="preheader-item preheader__workhours">
 							<span>
 								<svg class="svg-inline svg-inline--clock" aria-hidden="true" focusable="false" data-prefix="far" data-icon="clock" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-									<path fill="#EA1826" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"></path>
+									<path fill="#fff" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"></path>
 								</svg>
 							</span>
 							<span>Godziny pracy: Po—Pi: 9.00 - 18.00</span>
@@ -91,134 +91,125 @@
 														?>" alt="Orzeł Realty" class="logo-image" width="150" height="150">
 								</a>
 							</div>
+							<nav class="menu__body">
+								<div class="nav__wrapper">
+									<?php
+									if (function_exists('pll_current_language')) {
+										$current_language = pll_current_language();
+										$menu_slug = '';
+
+										switch ($current_language) {
+											case 'en':
+												$menu_slug = 'english-menu';
+												break;
+											case 'pl':
+												$menu_slug = 'polish-menu';
+												break;
+											case 'ru':
+												$menu_slug = 'russian-menu';
+												break;
+										}
+
+										$menu = wp_get_nav_menu_object($menu_slug);
+
+										if ($menu) {
+											$menu_items = wp_get_nav_menu_items($menu->term_id);
+											$menu_items_by_parent = array();
+
+											foreach ($menu_items as $menu_item) {
+												$menu_items_by_parent[$menu_item->menu_item_parent][] = $menu_item;
+											}
+
+											function display_menu_items($parent_id, $menu_items_by_parent)
+											{
+												if (!isset($menu_items_by_parent[$parent_id])) {
+													return;
+												}
+
+												$is_submenu = $parent_id !== 0;
+												$ul_class   = $is_submenu ? 'menu__sub-list' : 'menu__list';
+												$link_class = $is_submenu ? 'menu__sub-link' : 'menu__link';
+
+												echo '<ul class="' . esc_attr($ul_class) . '">';
+
+												foreach ($menu_items_by_parent[$parent_id] as $menu_item) {
+													$is_anchor         = strpos($menu_item->url, '#') !== false;
+													$has_submenu       = isset($menu_items_by_parent[$menu_item->ID]);
+													$is_active         = orzel_is_menu_item_active($menu_item->url);
+													$has_active_child  = $has_submenu ? orzel_menu_item_has_active_child($menu_item->ID, $menu_items_by_parent) : false;
+
+													$link_class_final = $link_class . ($is_anchor ? ' anchor-link' : '');
+													if ($is_active) {
+														$link_class_final .= ' is-active';
+													}
+
+													$item_class = $is_submenu ? 'menu__sub-item' : 'menu__item';
+
+													if ($has_submenu && !$is_submenu) {
+														$item_class .= ' menu__has-submenu';
+													}
+
+													if ($is_active) {
+														$item_class .= ' is-active';
+													}
+
+													if ($has_active_child) {
+														$item_class .= ' is-active-parent';
+													}
+
+													echo '<li class="' . esc_attr($item_class) . '">';
+
+													echo '<a href="' . esc_url($menu_item->url) . '" class="' . esc_attr($link_class_final) . '"' . ($is_anchor ? ' data-scroll' : '') . ($is_active ? ' aria-current="page"' : '') . '>';
+													echo esc_html($menu_item->title);
+
+													if ($has_submenu) {
+														echo '<svg class="menu__arrow" width="10" height="5" viewBox="7 10 10 5" fill="none" xmlns="http://www.w3.org/2000/svg">';
+														echo '<path d="M17 10.5L12 14.5" stroke="#F7F4EE" stroke-width="1.25" stroke-linecap="round" />';
+														echo '<path d="M12 14.5L7 10.5" stroke="#F7F4EE" stroke-width="1.25" stroke-linecap="round" />';
+														echo '</svg>';
+													}
+
+													echo '</a>';
+
+													if ($has_submenu) {
+														display_menu_items($menu_item->ID, $menu_items_by_parent);
+													}
+
+													echo '</li>';
+												}
+
+												echo '</ul>';
+											}
+
+											display_menu_items(0, $menu_items_by_parent);
+										}
+									}
+									?>
+									<div class="menu__mob-btn">
+										<a href="tel:+48739103744" class="mob-menu-button">
+											<span class="--icon-ico-callback ico-callback-header"></span>
+											<div class="mob-menu-content">
+												<span class="mob-menu-content__text">
+													<?php echo pll_current_language() == 'pl' ? 'Uzyskać wycenę' : (pll_current_language() == 'ru' ? 'Получить предложение' : (pll_current_language() == 'uk' ? 'Отримати пропозицію' : 'Get quote')); ?>
+												</span>
+												<span class="mob-menu-content__phone">739 103 744</span>
+											</div>
+										</a>
+									</div>
+								</div>
+							</nav>
 							<div class="mobile-phone-link">
 								<a href="tel:+48739103744">739 103 744</a>
 							</div>
 							<div class="header-elements">
-								<nav class="menu__body">
-									<div class="nav__wrapper">
-										<?php
-										if (function_exists('pll_current_language')) {
-											$current_language = pll_current_language();
-											$menu_slug = '';
 
-											switch ($current_language) {
-												case 'en':
-													$menu_slug = 'english-menu';
-													break;
-												case 'pl':
-													$menu_slug = 'polish-menu';
-													break;
-												case 'ru':
-													$menu_slug = 'russian-menu';
-													break;
-											}
-
-											$menu = wp_get_nav_menu_object($menu_slug);
-
-											if ($menu) {
-												$menu_items = wp_get_nav_menu_items($menu->term_id);
-												$menu_items_by_parent = array();
-
-												foreach ($menu_items as $menu_item) {
-													$menu_items_by_parent[$menu_item->menu_item_parent][] = $menu_item;
-												}
-
-												function display_menu_items($parent_id, $menu_items_by_parent)
-												{
-													if (!isset($menu_items_by_parent[$parent_id])) {
-														return;
-													}
-
-													$is_submenu = $parent_id !== 0;
-													$ul_class   = $is_submenu ? 'menu__sub-list' : 'menu__list';
-													$link_class = $is_submenu ? 'menu__sub-link' : 'menu__link';
-
-													echo '<ul class="' . esc_attr($ul_class) . '">';
-
-													foreach ($menu_items_by_parent[$parent_id] as $menu_item) {
-														$is_anchor         = strpos($menu_item->url, '#') !== false;
-														$has_submenu       = isset($menu_items_by_parent[$menu_item->ID]);
-														$is_active         = orzel_is_menu_item_active($menu_item->url);
-														$has_active_child  = $has_submenu ? orzel_menu_item_has_active_child($menu_item->ID, $menu_items_by_parent) : false;
-
-														$link_class_final = $link_class . ($is_anchor ? ' anchor-link' : '');
-														if ($is_active) {
-															$link_class_final .= ' is-active';
-														}
-
-														$item_class = $is_submenu ? 'menu__sub-item' : 'menu__item';
-
-														if ($has_submenu && !$is_submenu) {
-															$item_class .= ' menu__has-submenu';
-														}
-
-														if ($is_active) {
-															$item_class .= ' is-active';
-														}
-
-														if ($has_active_child) {
-															$item_class .= ' is-active-parent';
-														}
-
-														echo '<li class="' . esc_attr($item_class) . '">';
-
-														echo '<a href="' . esc_url($menu_item->url) . '" class="' . esc_attr($link_class_final) . '"' . ($is_anchor ? ' data-scroll' : '') . ($is_active ? ' aria-current="page"' : '') . '>';
-														echo esc_html($menu_item->title);
-
-														if ($has_submenu) {
-															echo '<svg class="menu__arrow" width="10" height="5" viewBox="7 10 10 5" fill="none" xmlns="http://www.w3.org/2000/svg">';
-															echo '<path d="M17 10.5L12 14.5" stroke="#151618" stroke-width="1.25" stroke-linecap="round" />';
-															echo '<path d="M12 14.5L7 10.5" stroke="#151618" stroke-width="1.25" stroke-linecap="round" />';
-															echo '</svg>';
-														}
-
-														echo '</a>';
-
-														if ($has_submenu) {
-															display_menu_items($menu_item->ID, $menu_items_by_parent);
-														}
-
-														echo '</li>';
-													}
-
-													echo '</ul>';
-												}
-
-												display_menu_items(0, $menu_items_by_parent);
-											}
-										}
-										?>
-										<div class="menu__mob-btn">
-											<a href="tel:+48739103744" class="mob-menu-button">
-												<span class="--icon-ico-callback ico-callback-header"></span>
-												<div class="mob-menu-content">
-													<span class="mob-menu-content__text">
-														<?php echo pll_current_language() == 'pl' ? 'Uzyskać wycenę' : (pll_current_language() == 'ru' ? 'Получить предложение' : (pll_current_language() == 'uk' ? 'Отримати пропозицію' : 'Get quote')); ?>
-													</span>
-													<span class="mob-menu-content__phone">739 103 744</span>
-												</div>
-											</a>
-										</div>
-									</div>
-								</nav>
 								<div class="header-buttons">
-									<button data-fls-popup-link="popup-order" class="header-popup-button" type="button" aria-label="Open Order Popup">
-										<div class="header-button-content">
-											<span class="header-button-content__text">
-												<?php echo pll_current_language() == 'pl' ? 'Uzyskać wycenę' : (pll_current_language() == 'ru' ? 'Получить предложение' : (pll_current_language() == 'uk' ? 'Отримати пропозицію' : 'Get quote')); ?>
-											</span>
-										</div>
-									</button>
 									<a href="tel:+48517351391" class="header-phone-button">
 										<span class="header-phone-button__icon">
 											<img src="/wp-content/uploads/2026/05/phone-call.png" alt="Phone">
 										</span>
 										<div class="header-phone-button__text">
-											<p>
-												<?php echo pll_current_language() == 'pl' ? 'Zadzwoń teraz' : (pll_current_language() == 'ru' ? 'Позвоните нам' : (pll_current_language() == 'uk' ? 'Зателефонуйте нам' : 'Call us')); ?>
-											</p>
-											<p>517 351 391</p>
+											<p>+48 517 351 391</p>
 										</div>
 									</a>
 								</div>

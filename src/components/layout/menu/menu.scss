@@ -13,7 +13,7 @@
 	&__body {
     @media (min-width: 981px) {
       // margin: 0 auto;
-			margin-left: auto;
+			// margin-left: auto;
     }
 		@media (max-width: 980px) {
 			position: fixed;
@@ -62,10 +62,10 @@
 	display: flex;
   align-items: center;
   gap: 10px;
-  color: #12151A;
-  font-size: 16px;
+  color: var(--brand-color);
+  font-size: 1.1rem;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 120%;
   transition: color 0.3s; /* Плавный переход цвета */
   position: relative;
@@ -78,10 +78,11 @@
     bottom: -3px;
     left: 0;
     transition: width 0.3s ease; /* Плавный переход ширины */
+		background-color: var(--brand-color);
   }
 
   &:hover {
-    color: var(--theme-color);
+    color: var(--brand-color);
 
     &::before {
        width: 100%; /* Подчеркивание растягивается на всю ширину */
@@ -117,8 +118,7 @@
 	top: 22px;
 	left: -20px;
 	color: #667;
-	background-color: #fff;
-	background: none;
+	background-color: var(--accent-color);
   // box-shadow: 0 5px 12px rgba(0, 0, 0, .15);
 	padding-top: 20px;
 	// padding-left: 10px;
@@ -166,28 +166,28 @@
 	margin: 0;
 }
 .menu__sub-link {
-	color: #000;
+	color: var(--brand-color);
 	display: block;
 	transition: all 0.3s ease;
 	padding: 10px;
   font-size: 16px;
 	font-weight: 400;
   text-transform: none;
-	background-color: #fff;
+	background-color: var(--accent-color);
 
 	&:hover {
 		color: var(--brand-subcolor);
 	}
 
 	&:hover {
-		color: #fff;
+		color: var(--accent-color);
 		background-color: var(--brand-color);
 	}
 
 	@media screen and (max-width: 980px){
 		padding: 0;
 		font-size: 14px;
-		color: #fff;
+		color: var(--accent-color);
 		background-color: unset;
 		width: fit-content;
 	}

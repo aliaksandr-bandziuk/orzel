@@ -1,7 +1,10 @@
 :root {
-	--primary: #000;
-	--brand-color: #102039;
-	--theme-color: #EA1826;
-	--theme-color-hover: #8f1c23;
-	--brand-subcolor: #fd6b1c;
+	--brand-color: #F7F4EE;
+	--accent-color: #B89A68;
+	--hover-color: #C8A776;
+	--text-primary: #1E1E1E;
+	--text-secondary: #5E5E5E;
+	--concrete-color: #CFC5B7;
+	--tree-color: #6A4B32;
+	--sky-color: #DCEEFF;
 }
