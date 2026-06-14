@@ -276,7 +276,7 @@ switch ($current_lang) {
 
         const data = new URLSearchParams();
         data.append('action', 'filter_portfolio');
-        data.append('portfolio_property_type', currentPropertyType);
+        data.append('property_type', currentPropertyType);
         data.append('paged', paged);
         data.append('lang', currentLang);
 
@@ -299,11 +299,6 @@ switch ($current_lang) {
             if (loadMoreBtn) {
               loadMoreBtn.style.display = html.trim() === '' ? 'none' : 'block';
             }
-
-            // window.scrollTo({
-            //   top: 0,
-            //   behavior: 'smooth'
-            // });
           })
           .catch(error => {
             portfolioContent.innerHTML = '<p><?php echo esc_js($error_label); ?></p>';
@@ -319,7 +314,7 @@ switch ($current_lang) {
 
         const data = new URLSearchParams();
         data.append('action', 'filter_portfolio');
-        data.append('portfolio_property_type', currentPropertyType);
+        data.append('property_type', currentPropertyType);
         data.append('paged', paged);
         data.append('lang', currentLang);
 

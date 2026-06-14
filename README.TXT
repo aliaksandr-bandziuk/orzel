@@ -1,20 +1,96 @@
-УВАГА! Правила використання:
--Стартовий шаблон "Чертоги Фрілансера" 4 надається в знак вдячності за благодійну підтримку каналу "Фрілансер по життю" на патреоні
--Збірку, або її частини заборонено продавати у будь-якому вигляді
--Збірку заборонено виставляти у відкритий доступ
--Збірку можна використовувати для власних цілей в тому числі для розробки комерційних проєктів
--Збірку заборонено використовувати в росії
+ORZEL REALTY — PROJECT README
 
-Документація збірки (доповнюється): https://www.patreon.com/collection/1439491?view=condensed
-Оновлення збірки: https://www.patreon.com/posts/126345239?collection=1439491
+Project type:
+Custom multilingual WordPress website for renovation and property investment company.
 
-ВАЖЛИВО! При винекненні питань та пропозицій пишіть у чат патронів у дискорді!
+Current status:
+Project partially completed (~70%).
 
-Для додавання у закритий чат патронів виконайте інструкцію:
--Зареєструватись (https://discord.com) у дискорд (це  месенджер де знаходиться чат)
--На патреон-сторінці  "Фрілансер по життю" натиснути на  вкладку "Моя  підписка" (https://www.patreon.com/freelancerlifestyle/membership).
--Перейшовши, пролиснути нижче та знайти розділ "Спільнота Discord", де є кнопка "Підключити Discord",
--Натиснувши яку, відбувається підключення вас до чату  "Патронес".
--Після цього чат "Патронес" з'явиться у вашому дискорді.
+Completed work:
 
-❤️Дякую за підтримку каналу
+✓ WordPress setup and configuration
+✓ Custom theme development
+✓ Responsive layout implementation
+✓ Homepage implementation
+✓ Services pages implementation
+✓ Blog structure implementation
+✓ Portfolio/projects pages implementation
+✓ Custom Post Types
+✓ Custom ACF blocks
+✓ Dynamic content management from admin panel
+✓ Header and footer
+✓ Navigation
+✓ Contact forms
+✓ Popup/modal forms
+✓ Styling based on initially approved design
+✓ Templates for service pages
+✓ Gallery implementation
+✓ Basic CMS functionality for content editing
+✓ Multilingual functionality
+✓ Language switcher
+✓ Translated content structure
+✓ Multilingual admin setup
+✓ Localized pages and templates
+
+Remaining work (approximate):
+
+– Final content filling
+– Images replacement/upload
+– Additional polishing
+– Possible visual redesign (requested later)
+– Final testing
+– SEO finishing touches
+
+Requirements:
+
+PHP:
+8.1+ recommended
+
+MySQL:
+5.7+
+
+WordPress:
+latest stable version
+
+Installation:
+
+1. Import database (.sql)
+
+2. Copy project files
+
+3. Activate theme in WordPress admin
+
+4. Import ACF fields if necessary
+
+5. Update:
+
+Settings → Permalinks → Save
+
+6. Verify forms and plugins
+
+Admin panel:
+
+URL:
+
+/wp-admin
+
+Admin login: admin
+Admin password: Ye34ZhV8QxSsACG
+
+Database login and password - in the docker-compose.yml file.
+
+Credentials:
+
+See ACCESS.txt
+
+Notes:
+
+Project was initially developed according to approved visual references.
+Later additional redesign requests appeared (premium / luxury visual style), which were outside the original agreed direction.
+
+Archive prepared to allow further work by another developer without blocking project continuation.
+
+
+
+Date:
+27.05.2026

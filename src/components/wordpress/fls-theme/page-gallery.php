@@ -52,7 +52,7 @@ $items_per_page = 20;
 /**
  * Рендер карточек галереи
  */
-function felgilab_render_gallery_items($query, $zoom_text, $items_per_page = 20)
+function orzel_realty_render_gallery_items($query, $zoom_text, $items_per_page = 20)
 {
   $index = 0;
 
@@ -100,7 +100,7 @@ function felgilab_render_gallery_items($query, $zoom_text, $items_per_page = 20)
     <section class="main-gallery page-gallery">
       <div class="main-gallery__container">
         <div class="block-precontent mb50">
-          <?php $pretitle = get_post_meta(get_the_ID(), '_felgilab_pretitle', true); ?>
+          <?php $pretitle = get_post_meta(get_the_ID(), '_orzel_realty_pretitle', true); ?>
           <?php if ($pretitle) : ?>
             <p class="block-precontent__descr mb20">
               <?php echo esc_html($pretitle); ?>
@@ -147,7 +147,7 @@ function felgilab_render_gallery_items($query, $zoom_text, $items_per_page = 20)
                   <?php if ($all_gallery_query->have_posts()) : ?>
                     <div class="gallery" data-fls-gallery data-gallery-limit="<?php echo esc_attr($items_per_page); ?>">
                       <?php
-                      $total_items = felgilab_render_gallery_items(
+                      $total_items = orzel_realty_render_gallery_items(
                         $all_gallery_query,
                         $gallery_i18n['zoom'][$lang],
                         $items_per_page
@@ -198,7 +198,7 @@ function felgilab_render_gallery_items($query, $zoom_text, $items_per_page = 20)
                     <?php if ($gallery_query->have_posts()) : ?>
                       <div class="gallery" data-fls-gallery data-gallery-limit="<?php echo esc_attr($items_per_page); ?>">
                         <?php
-                        $total_items = felgilab_render_gallery_items(
+                        $total_items = orzel_realty_render_gallery_items(
                           $gallery_query,
                           $gallery_i18n['zoom'][$lang],
                           $items_per_page

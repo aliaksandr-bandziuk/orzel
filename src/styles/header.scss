@@ -42,10 +42,10 @@
 .header {
   position: relative;
   z-index: 50;
-  background: rgba(53, 52, 52, 0.5);
+  // background: rgba(53, 52, 52, 0.5);
 
   @media screen and (min-width: 980px) {
-    padding: 10px 0;
+    padding: 0 0 10px 0;
   }
 }
 
@@ -54,7 +54,7 @@
 }
 
 .header__wrapper {
-  // background-color: var(--bg-primary);
+  padding: 5px 0;
   width: 100%;
   position: relative;
   z-index: 20;

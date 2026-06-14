@@ -4,7 +4,7 @@
   "description": "Kompaktowy blok CTA z krótkim formularzem kontaktowym (telefon).",
   "category": "theme",
   "icon": "phone",
-  "keywords": ["contact", "cta", "phone", "form", "felgilab"],
+  "keywords": ["contact", "cta", "phone", "form", "orzel"],
   "acf": {
     "mode": "preview",
     "renderTemplate": "shortContactBlock.php"

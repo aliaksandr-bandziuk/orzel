@@ -520,6 +520,7 @@ function orzel_filter_portfolio_callback()
 {
 	$paged = isset($_POST['paged']) ? absint($_POST['paged']) : 1;
 	$lang  = isset($_POST['lang']) ? sanitize_text_field($_POST['lang']) : '';
+	$property_type = isset($_POST['property_type']) ? sanitize_text_field($_POST['property_type']) : 'all';
 
 	$args = array(
 		'post_type'        => 'portfolio',
@@ -531,6 +532,16 @@ function orzel_filter_portfolio_callback()
 
 	if (!empty($lang)) {
 		$args['lang'] = $lang;
+	}
+
+	if ($property_type !== 'all') {
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => 'property_type',
+				'field'    => 'slug',
+				'terms'    => $property_type,
+			),
+		);
 	}
 
 	$query = new WP_Query($args);

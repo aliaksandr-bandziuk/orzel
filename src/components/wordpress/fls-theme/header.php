@@ -88,7 +88,7 @@
 									<img src="<?php
 														$custom_logo__url = wp_get_attachment_image_src(get_theme_mod('custom_logo'), 'full');
 														echo $custom_logo__url[0];
-														?>" alt="Felgilab" class="logo-image" width="150" height="150">
+														?>" alt="Orzeł Realty" class="logo-image" width="150" height="150">
 								</a>
 							</div>
 							<div class="mobile-phone-link">

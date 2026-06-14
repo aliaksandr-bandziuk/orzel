@@ -237,11 +237,12 @@ $current_lang = pll_current_language();
                     <p class="portfolio-card__title"><?php the_title(); ?></p>
 
                     <?php
-                    $car_name     = get_post_meta(get_the_ID(), '_portfolio_car_name', true);
-                    $rim_diameter = get_post_meta(get_the_ID(), '_portfolio_rim_diameter', true);
-                    $rim_color    = get_post_meta(get_the_ID(), '_portfolio_rim_color', true);
-                    $service_name = get_post_meta(get_the_ID(), '_portfolio_service_name', true);
+                    $building_type = get_post_meta(get_the_ID(), '_portfolio_building_type', true);
+                    $duration      = get_post_meta(get_the_ID(), '_portfolio_duration', true);
+                    $square        = get_post_meta(get_the_ID(), '_portfolio_service_name', true);
                     ?>
+
+
                   </div>
 
                   <div class="portfolio-inner__item">

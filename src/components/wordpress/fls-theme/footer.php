@@ -312,7 +312,7 @@
 		],
 	];
 
-	$privacy_page_url = 'https://felgilab.pl/polityka-prywatnosci/';
+	$privacy_page_url = 'https://orzel-realty.pl/polityka-prywatnosci/';
 	?>
 
 	<div class="cookie-banner" id="cookie-banner" hidden>

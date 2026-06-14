@@ -4,7 +4,7 @@
   "description": "Sekcja procesu pracy",
   "category": "formatting",
   "icon": "update",
-  "keywords": ["process", "working process", "felgilab"],
+  "keywords": ["process", "working process"],
   "acf": {
     "mode": "preview",
     "renderTemplate": "workingProcess.php"

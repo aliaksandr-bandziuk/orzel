@@ -80,8 +80,8 @@ if (function_exists('get_block_wrapper_attributes')) {
               continue;
             }
 
-            if (function_exists('felgilab_add_faq_schema_item')) {
-              felgilab_add_faq_schema_item($question, $answer);
+            if (function_exists('orzel_realty_add_faq_schema_item')) {
+              orzel_realty_add_faq_schema_item($question, $answer);
             }
 
           ?>
