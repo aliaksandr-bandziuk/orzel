@@ -1,4 +1,7 @@
 :root {
+	--font-heading: "Playfair Display", Georgia, serif;
+	--font-body: "Inter", system-ui, sans-serif;
+
 	--brand-color: #F7F4EE;
 	--accent-color: #B89A68;
 	--hover-color: #C8A776;

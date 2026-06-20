@@ -1,0 +1,12 @@
+{
+  "name": "acf/servicesmainblock",
+  "title": "Services Main Block",
+  "description": "Homepage grid of service cards queried from the services CPT.",
+  "category": "design",
+  "keywords": ["services", "grid", "cards", "homepage"],
+  "apiVersion": 2,
+  "acf": {
+    "renderTemplate": "./servicesMainBlock.php",
+    "mode": "preview"
+  }
+}

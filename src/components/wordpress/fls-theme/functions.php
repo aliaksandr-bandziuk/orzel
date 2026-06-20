@@ -125,22 +125,6 @@ function fls_setup()
 }
 add_action('after_setup_theme', 'fls_setup');
 
-add_action('wp_head', function () {
-?>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		rel="preload"
-		as="style"
-		href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap"
-		onload="this.onload=null;this.rel='stylesheet'">
-	<noscript>
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap">
-	</noscript>
-<?php
-}, 1);
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -283,6 +267,36 @@ function orzel_register_footer_options()
 	}
 }
 
+add_action('acf/init', 'orzel_register_acf_field_groups');
+function orzel_register_acf_field_groups()
+{
+	if (!function_exists('acf_add_local_field_group')) {
+		return;
+	}
+
+	$template_dir = get_template_directory() . '/template-parts';
+
+	$patterns = [
+		$template_dir . '/blocks/*/group_*.json',
+		$template_dir . '/fields/group_*.json',
+	];
+
+	$groups = [];
+	foreach ($patterns as $pattern) {
+		$found = glob($pattern);
+		if ($found) {
+			$groups = array_merge($groups, $found);
+		}
+	}
+
+	foreach ($groups as $file) {
+		$data = json_decode(file_get_contents($file), true);
+		if ($data) {
+			acf_add_local_field_group($data);
+		}
+	}
+}
+
 add_action('acf/init', 'orzel_register_acf_blocks');
 function orzel_register_acf_blocks()
 {
@@ -299,6 +313,7 @@ function orzel_register_acf_blocks()
 		register_block_type(get_template_directory() . "/template-parts/blocks/shortContactBlock/block.json");
 		register_block_type(get_template_directory() . "/template-parts/blocks/faqBlock/block.json");
 		register_block_type(get_template_directory() . "/template-parts/blocks/beforeAfterBlock/block.json");
+		register_block_type(get_template_directory() . "/template-parts/blocks/servicesMainBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/sliderStandardBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/galleryCustomBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/ctaLiteBlock/block.json");

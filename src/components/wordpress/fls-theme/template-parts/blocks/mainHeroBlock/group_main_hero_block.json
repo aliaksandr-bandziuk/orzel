@@ -1,0 +1,94 @@
+{
+  "key": "group_main_hero_block",
+  "title": "Main Hero Block",
+  "fields": [
+    {
+      "key": "field_hero_background_image",
+      "label": "Background Image",
+      "name": "background_image",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all"
+    },
+    {
+      "key": "field_hero_pretitle",
+      "label": "Pretitle (overline label)",
+      "name": "pretitle",
+      "type": "text",
+      "placeholder": "PROPOZYCJA DLA CIEBIE"
+    },
+    {
+      "key": "field_hero_title",
+      "label": "Title",
+      "name": "title",
+      "type": "textarea",
+      "rows": 3,
+      "new_lines": "br",
+      "placeholder": "Poznaj orientacyjny\nkoszt remontu"
+    },
+    {
+      "key": "field_hero_description",
+      "label": "Description",
+      "name": "description",
+      "type": "textarea",
+      "rows": 4,
+      "new_lines": "",
+      "placeholder": "Oblicz koszt remontu w mniej niż 2 minuty. Wybierz szybki kalkulator lub przygotuj szczegółową wycenę projektu."
+    },
+    {
+      "key": "field_hero_show_decor",
+      "label": "Show Decorative Element",
+      "name": "show_decor",
+      "type": "true_false",
+      "default_value": 0,
+      "ui": 1
+    },
+    {
+      "key": "field_hero_services_text",
+      "label": "Primary Button Text",
+      "name": "services_text",
+      "type": "text",
+      "placeholder": "Szybki kalkulator"
+    },
+    {
+      "key": "field_hero_services_url",
+      "label": "Primary Button URL",
+      "name": "services_url",
+      "type": "url",
+      "placeholder": "https://"
+    },
+    {
+      "key": "field_hero_popup_text",
+      "label": "Secondary Button Text",
+      "name": "popup_text",
+      "type": "text",
+      "placeholder": "Szczegółowy kalkulator"
+    },
+    {
+      "key": "field_hero_popup_link",
+      "label": "Secondary Button Popup ID",
+      "name": "popup_link",
+      "type": "text",
+      "placeholder": "popup-calculator"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/mainheroblock"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}

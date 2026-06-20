@@ -216,7 +216,8 @@
 
 .language-btn {
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 400;
+  color: var(--brand-color);
 }
 
 .arrow-icon {
@@ -405,6 +406,14 @@
     font-weight: 700;
     color: var(--brand-subcolor);
   }
+}
+
+.menu__link,
+.menu__sub-link {
+  font-family: var(--font-body);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .menu__link.is-active,

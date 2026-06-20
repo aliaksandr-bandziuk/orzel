@@ -4,8 +4,7 @@
   position: relative;
   overflow: hidden;
   min-height: 85dvh;
-  background-color: #000000;
-  // margin-bottom: clamp(3.125rem, 1.875rem + 5vw, 5.625rem);
+  background-color: #1a1612;
 
   @media screen and (min-width: 768px) {
     min-height: unset;
@@ -29,12 +28,16 @@
       z-index: 3;
       background: linear-gradient(
         90deg,
-        rgba(18, 30, 44, 0.88) 0%,
-        rgba(24, 38, 55, 0.82) 45%,
-        rgba(32, 47, 66, 0.68) 100%
+        rgba(0, 0, 0, 0.78) 0%,
+        rgba(0, 0, 0, 0.62) 30%,
+        rgba(0, 0, 0, 0.22) 62%,
+        rgba(0, 0, 0, 0.00) 100%
       );
-      backdrop-filter: blur(3px);
       pointer-events: none;
+
+      @media screen and (max-width: 767px) {
+        background: rgba(0, 0, 0, 0.65);
+      }
     }
   }
 
@@ -75,40 +78,50 @@
     width: 100%;
     margin: 0 auto;
     padding-inline: 15px;
-
-    // @media screen and (min-width: 768px) {
-    //   padding-inline: 30px;
-    // }
-
-    // @media screen and (min-width: 1200px) {
-    //   max-width: 1230px;
-    // }
   }
 
   // .main-hero__content
   &__content {
-    max-width: 900px;
+    max-width: 580px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
+
+    @media screen and (min-width: 768px) {
+      max-width: 620px;
+      gap: 20px;
+    }
   }
 
-  // .main-hero__pretitle
+  // .main-hero__pretitle — overline label above the heading
   &__pretitle {
-    font-size: 16px;
-    color: #ffffff;
-    font-weight: 400;
-    line-height: 1.55;
-    max-width: 600px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-color);
+    line-height: 1;
   }
 
   // .main-hero__title
   &__title {
-    font-size: 60px;
+    font-size: clamp(2rem, 1.25rem + 3.13vw, 3.75rem);
     font-weight: 600;
     line-height: 1.06;
     color: #ffffff;
-    max-width: 900px;
+
+    @media screen and (min-width: 768px) {
+      font-size: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+    }
+  }
+
+  // .main-hero__description
+  &__description {
+    font-size: clamp(0.875rem, 0.813rem + 0.25vw, 1rem);
+    font-weight: 400;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 460px;
   }
 
   // .main-hero__decor
@@ -123,12 +136,55 @@
   &__buttons {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    margin-top: 4px;
 
     @media screen and (min-width: 768px) {
       flex-direction: row;
-      gap: 20px;
+      align-items: center;
+      gap: 16px;
       flex-wrap: wrap;
+    }
+  }
+
+  // Primary button override — solid gold
+  .services-main.main-btn {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    text-transform: none;
+    font-size: 15px;
+
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    @media screen and (min-width: 768px) {
+      &:hover {
+        background-color: var(--hover-color);
+        border-color: var(--hover-color);
+      }
+    }
+  }
+
+  // Secondary button override — outline/ghost
+  .button-main.main-btn {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.38);
+    color: #fff;
+    text-transform: none;
+    font-size: 15px;
+
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    @media screen and (min-width: 768px) {
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.65);
+      }
     }
   }
 
@@ -166,15 +222,6 @@
 }
 
 .main-btn {
-  // padding: 20px;
-  // border-radius: 2px;
-  // font-size: clamp(1.125rem, 1.063rem + 0.25vw, 1.25rem);
-  // font-weight: 500;
-  // text-transform: uppercase;
-  // display: inline-flex;
-  // width: fit-content;
-  // background-color: var(--theme-color);
-  // color: #fff;
   @extend %button-primary;
 
   @media screen and (min-width: 768px) {

@@ -1,7 +1,8 @@
 <?php
 $background_image = get_field('background_image');
-$pretitle         = get_field('pretitle');
+$overline         = get_field('pretitle');        // reused ACF field; class renamed to main-hero__pretitle (overline style)
 $title            = get_field('title');
+$description      = get_field('description');     // new ACF field — add it in block registration
 $show_decor       = get_field('show_decor');
 
 $services_text    = get_field('services_text');
@@ -46,15 +47,21 @@ $section_classes = 'main-hero';
     <div class="main-hero__container">
       <div class="main-hero__content">
 
+        <?php if (!empty($overline)) : ?>
+          <p class="main-hero__pretitle">
+            <?php echo esc_html($overline); ?>
+          </p>
+        <?php endif; ?>
+
         <?php if (!empty($title)) : ?>
-          <h1 class="main-hero__title mb20">
+          <h1 class="main-hero__title">
             <?php echo nl2br(esc_html($title)); ?>
           </h1>
         <?php endif; ?>
 
-        <?php if (!empty($pretitle)) : ?>
-          <p class="main-hero__pretitle mb30">
-            <?php echo esc_html($pretitle); ?>
+        <?php if (!empty($description)) : ?>
+          <p class="main-hero__description">
+            <?php echo esc_html($description); ?>
           </p>
         <?php endif; ?>
 
@@ -67,10 +74,10 @@ $section_classes = 'main-hero';
           <?php if (!empty($services_url) && !empty($services_text)) : ?>
             <a href="<?php echo esc_url($services_url); ?>" class="services-main main-btn">
               <div class="services-main__wrapper">
+                <span class="services-main__icon --icon-ico-triangle" aria-hidden="true"></span>
                 <span class="services-main__text">
                   <?php echo esc_html($services_text); ?>
                 </span>
-                <span class="services-main__icon --icon-ico-triangle" aria-hidden="true"></span>
               </div>
             </a>
           <?php endif; ?>
@@ -81,10 +88,10 @@ $section_classes = 'main-hero';
               class="button-main main-btn"
               type="button">
               <div class="button-main__wrapper">
+                <span class="button-main__icon --icon-ico-triangle" aria-hidden="true"></span>
                 <span class="button-main__text">
                   <?php echo esc_html($popup_text); ?>
                 </span>
-                <span class="button-main__icon --icon-ico-triangle" aria-hidden="true"></span>
               </div>
             </button>
           <?php endif; ?>

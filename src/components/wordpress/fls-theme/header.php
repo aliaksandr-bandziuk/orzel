@@ -14,7 +14,6 @@
 <html <?php language_attributes(); ?>>
 
 <head>
-	<meta name="robots" content="noindex">
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
@@ -29,52 +28,6 @@
 
 
 		<header class="header" id="siteHeader">
-			<!-- продумать, где разместить preheader в админке -->
-			<div class="preheader" id="sitePreheader">
-				<div class="preheader__container">
-					<div class="preheader__wrapper">
-						<div class="preheader-item preheader__workhours">
-							<span>
-								<svg class="svg-inline svg-inline--clock" aria-hidden="true" focusable="false" data-prefix="far" data-icon="clock" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-									<path fill="#fff" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"></path>
-								</svg>
-							</span>
-							<span>Godziny pracy: Po—Pi: 9.00 - 18.00</span>
-						</div>
-						<div class="preheader-item preheader__lang">
-							<div id="languageDropdown" class="language-dropdown">
-								<div class="language-dropdown__wrapper">
-									<button id="languageBtn" class="language-btn">
-										<?php echo strtoupper(pll_current_language('slug')); ?>
-									</button>
-									<span id="arrowIcon" class="arrow-icon">
-										<svg xmlns="http://www.w3.org/2000/svg" width="10" height="20" viewBox="0 0 10 20" fill="none">
-											<path d="M1 9L4.64645 12.6464C4.84171 12.8417 5.15829 12.8417 5.35355 12.6464L9 9" stroke-linecap="round" />
-										</svg>
-									</span>
-								</div>
-								<ul class="language-list" id="languageList">
-									<?php
-									function get_excluded_languages()
-									{
-										return ['it', 'fr']; // hide Italian and French languages
-									}
-									$languages = pll_the_languages(['raw' => 1]);
-									$current_language = pll_current_language('slug');
-									$excluded_languages = get_excluded_languages();
-
-									foreach ($languages as $language) {
-										if ($language['slug'] !== $current_language && !in_array($language['slug'], $excluded_languages)) {
-											echo '<li><a href="' . esc_url($language['url']) . '">' . strtoupper($language['slug']) . '</a></li>';
-										}
-									}
-									?>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="header__placeholder" id="headerPlaceholder"></div>
 			<div class="header__wrapper" id="headerWrapper">
 				<div class="header__container relative">
@@ -202,11 +155,43 @@
 								<a href="tel:+48739103744">739 103 744</a>
 							</div>
 							<div class="header-elements">
+								<div id="languageDropdown" class="language-dropdown">
+									<div class="language-dropdown__wrapper">
+										<button id="languageBtn" class="language-btn">
+											<?php echo strtoupper(pll_current_language('slug')); ?>
+										</button>
+										<span id="arrowIcon" class="arrow-icon">
+											<svg xmlns="http://www.w3.org/2000/svg" width="10" height="20" viewBox="0 0 10 20" fill="none">
+												<path d="M1 9L4.64645 12.6464C4.84171 12.8417 5.15829 12.8417 5.35355 12.6464L9 9" stroke-linecap="round" />
+											</svg>
+										</span>
+									</div>
+									<ul class="language-list" id="languageList">
+										<?php if (function_exists('pll_the_languages')) : ?>
+											<?php
+											$languages = pll_the_languages(['raw' => 1]);
+											$current_language = pll_current_language('slug');
 
+											foreach ($languages as $language) :
+												if ($language['slug'] === $current_language) {
+													continue;
+												}
+											?>
+												<li>
+													<a href="<?php echo esc_url($language['url']); ?>">
+														<?php echo esc_html(strtoupper($language['slug'])); ?>
+													</a>
+												</li>
+											<?php endforeach; ?>
+										<?php endif; ?>
+									</ul>
+								</div>
 								<div class="header-buttons">
 									<a href="tel:+48517351391" class="header-phone-button">
 										<span class="header-phone-button__icon">
-											<img src="/wp-content/uploads/2026/05/phone-call.png" alt="Phone">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+												<path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4L14 14.6C14.2 14.4 14.6 14.4 14.8 14.6C15.6 14.9 16.5 15.1 17.4 15.1C17.8 15.1 18.1 15.4 18.1 15.8V17.9C18.1 18.3 17.8 18.6 17.4 18.6C9.7 18.6 3.5 12.4 3.5 4.7C3.5 4.3 3.8 4 4.2 4H6.3C6.7 4 7 4.3 7 4.7C7 5.6 7.2 6.5 7.5 7.3C7.6 7.6 7.5 7.9 7.3 8.1L6.6 10.8Z" fill="#ffffff"/>
+											</svg>
 										</span>
 										<div class="header-phone-button__text">
 											<p>+48 517 351 391</p>
@@ -414,7 +399,7 @@
 
 							<div class="about-company__divider mb30">
 								<svg xmlns="http://www.w3.org/2000/svg" width="64" height="8" aria-hidden="true">
-									<path fill="#fd6b1c" d="M34 0h30v2H34zm0 6h15v2H34zM0 0h30v2H0zm15 6h15v2H15z" />
+									<path fill="#B89A68" d="M34 0h30v2H34zm0 6h15v2H34zM0 0h30v2H0zm15 6h15v2H15z" />
 								</svg>
 							</div>
 
