@@ -14,6 +14,7 @@
 <html <?php language_attributes(); ?>>
 
 <head>
+	<meta name="robots" content="noindex">
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
@@ -189,9 +190,7 @@
 								<div class="header-buttons">
 									<a href="tel:+48517351391" class="header-phone-button">
 										<span class="header-phone-button__icon">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-												<path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4L14 14.6C14.2 14.4 14.6 14.4 14.8 14.6C15.6 14.9 16.5 15.1 17.4 15.1C17.8 15.1 18.1 15.4 18.1 15.8V17.9C18.1 18.3 17.8 18.6 17.4 18.6C9.7 18.6 3.5 12.4 3.5 4.7C3.5 4.3 3.8 4 4.2 4H6.3C6.7 4 7 4.3 7 4.7C7 5.6 7.2 6.5 7.5 7.3C7.6 7.6 7.5 7.9 7.3 8.1L6.6 10.8Z" fill="#ffffff"/>
-											</svg>
+											<img src="/wp-content/uploads/2026/05/phone-call.png" alt="Phone">
 										</span>
 										<div class="header-phone-button__text">
 											<p>+48 517 351 391</p>
@@ -399,7 +398,7 @@
 
 							<div class="about-company__divider mb30">
 								<svg xmlns="http://www.w3.org/2000/svg" width="64" height="8" aria-hidden="true">
-									<path fill="#B89A68" d="M34 0h30v2H34zm0 6h15v2H34zM0 0h30v2H0zm15 6h15v2H15z" />
+									<path fill="#fd6b1c" d="M34 0h30v2H34zm0 6h15v2H34zM0 0h30v2H0zm15 6h15v2H15z" />
 								</svg>
 							</div>
 

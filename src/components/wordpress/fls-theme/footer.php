@@ -1,342 +1,300 @@
-	<?php
-	// Определяем текущий язык через Polylang
-	$current_language = function_exists('pll_current_language') ? pll_current_language() : 'pl';
+<?php
+// Language detection — preserved exactly as before
+$current_language = function_exists('pll_current_language') ? pll_current_language() : 'pl';
+$footer_option_id = 'footer_' . $current_language;
 
-	// Формируем идентификатор опций футера для текущего языка
-	$footer_option_id = 'footer_' . $current_language;
+// New contact & design fields
+$footer_heading     = get_field('footer_heading',     $footer_option_id);
+$footer_subheading  = get_field('footer_subheading',  $footer_option_id);
+$footer_phone       = get_field('footer_phone',       $footer_option_id);
+$footer_email       = get_field('footer_email',       $footer_option_id);
+$footer_address     = get_field('footer_address',     $footer_option_id);
+$footer_telegram    = get_field('footer_telegram',    $footer_option_id);
+$footer_bg_image    = get_field('footer_bg_image',    $footer_option_id);
+$footer_copyright   = get_field('footer_copyright',   $footer_option_id);
+$footer_terms_label = get_field('footer_terms_label', $footer_option_id);
+$footer_terms_url   = get_field('footer_terms_url',   $footer_option_id);
 
-	// Основные поля
-	$footer_logo = get_field('footer_logo', $footer_option_id);
-	$footer_description = get_field('footer_description', $footer_option_id);
+// Nav columns — existing DB group fields
+$footer_quick_links = get_field('footer_quick_links', $footer_option_id);
+$footer_services    = get_field('footer_services',    $footer_option_id);
 
-	// Working hours
-	$footer_working_hours = get_field('footer_working_hours', $footer_option_id);
+// Privacy link — standalone fields (migrated from old footer_bottom group)
+$footer_privacy_label = get_field('footer_privacy_label', $footer_option_id) ?: '';
+$footer_privacy_url   = get_field('footer_privacy_url',   $footer_option_id) ?: '';
 
-	$footer_working_hours_title = $footer_working_hours['title'] ?? '';
-	$footer_working_hours_text  = $footer_working_hours['text'] ?? '';
-
-	// Quick Links
-	$footer_quick_links = get_field('footer_quick_links', $footer_option_id);
-
-	$footer_quick_links_title = $footer_quick_links['title'] ?? '';
-	$footer_quick_links_items = $footer_quick_links['items'] ?? [];
-
-	// Services
-	$footer_services = get_field('footer_services', $footer_option_id);
-
-	$footer_services_title = $footer_services['title'] ?? '';
-	$footer_services_items = $footer_services['items'] ?? [];
-
-	// Нижняя часть оставляем как была
-	$footer_bottom = get_field('footer_bottom', $footer_option_id);
-
-	$footer_privacy_label = $footer_bottom['privacy_label'] ?? '';
-	$footer_privacy_url   = $footer_bottom['privacy_url'] ?? '';
-	?>
-
-	<?php
-	if (!function_exists('orzel_footer_get_link_data')) {
-		function orzel_footer_get_link_data($item)
-		{
-			$link = $item['url'] ?? '';
-
-			$url = '';
-			$target = '_self';
-			$label = $item['label'] ?? '';
-
-			if (is_array($link)) {
-				$url = $link['url'] ?? '';
-				$target = $link['target'] ?? '_self';
-
-				if (empty($label)) {
-					$label = $link['title'] ?? '';
-				}
-			} else {
-				$url = $link;
-			}
-
-			return [
-				'url' => $url,
-				'target' => $target,
-				'label' => $label,
-			];
-		}
+// Copyright: replace {year} placeholder, or fall back to generated string
+if (!empty($footer_copyright)) {
+	$footer_copyright = str_replace('{year}', date('Y'), $footer_copyright);
+} else {
+	$year = date('Y');
+	switch ($current_language) {
+		case 'ru': $footer_copyright = '© ' . $year . ' Orzeł Realty. Все права защищены.'; break;
+		case 'uk': $footer_copyright = '© ' . $year . ' Orzeł Realty. Всі права захищені.'; break;
+		case 'en': $footer_copyright = '© ' . $year . ' Orzeł Realty. All rights reserved.'; break;
+		default:   $footer_copyright = '© ' . $year . ' Orzeł Realty. Wszelkie prawa zastrzeżone.'; break;
 	}
-	?>
+}
+?>
 
-	<footer class="footer">
-		<img class="footer__shape-1" src="/wp-content/uploads/2026/05/shape-f-1.png" alt="footer shape 1">
-		<img class="footer__shape-2" src="/wp-content/uploads/2026/05/shape-f-2.png" alt="footer shape 2">
-		<div class="footer__container">
+<footer class="footer"<?php if (!empty($footer_bg_image['url'])) : ?> style="background-image: url('<?php echo esc_url($footer_bg_image['url']); ?>')"<?php endif; ?>>
+	<div class="footer__inner">
 
-			<div class="footer-data">
-				<div class="footer-data__wrapper">
+		<div class="footer__main">
+			<div class="footer__content">
 
-					<!-- COLUMN 1 -->
-					<div class="footer-block">
-						<div class="footer-block__wrapper">
+				<?php if ($footer_heading) : ?>
+					<h2 class="footer__heading"><?php echo esc_html($footer_heading); ?></h2>
+				<?php endif; ?>
 
-							<?php if (!empty($footer_logo['url'])) : ?>
-								<div class="footer-block__logo">
-									<a href="<?php echo esc_url(get_home_url()); ?>" class="header-logo__link">
-										<img
-											src="<?php echo esc_url($footer_logo['url']); ?>"
-											alt="<?php echo esc_attr($footer_logo['alt'] ?: 'Logo'); ?>"
-											class="logo-image"
-											width="<?php echo esc_attr($footer_logo['width'] ?? ''); ?>"
-											height="<?php echo esc_attr($footer_logo['height'] ?? ''); ?>">
-									</a>
-								</div>
-							<?php endif; ?>
+				<?php if ($footer_subheading) : ?>
+					<p class="footer__subheading"><?php echo esc_html($footer_subheading); ?></p>
+				<?php endif; ?>
 
-							<?php if ($footer_description) : ?>
-								<div class="footer-block__descr">
-									<?php echo wp_kses_post(nl2br($footer_description)); ?>
-								</div>
-							<?php endif; ?>
+				<div class="footer__contacts">
 
-							<?php if ($footer_working_hours_title || $footer_working_hours_text) : ?>
-								<div class="footer-working-hours">
-
-									<?php if ($footer_working_hours_title) : ?>
-										<div class="footer-block__title">
-											<?php echo esc_html($footer_working_hours_title); ?>
-										</div>
-									<?php endif; ?>
-
-									<?php if ($footer_working_hours_text) : ?>
-										<div class="footer-working-hours__text">
-											<?php echo wp_kses_post(nl2br($footer_working_hours_text)); ?>
-										</div>
-									<?php endif; ?>
-
-								</div>
-							<?php endif; ?>
-
-						</div>
-					</div>
-
-					<!-- COLUMN 2 -->
-					<div class="footer-block">
-						<div class="footer-block__wrapper">
-
-							<?php if ($footer_quick_links_title) : ?>
-								<div class="footer-block__title">
-									<?php echo esc_html($footer_quick_links_title); ?>
-								</div>
-							<?php endif; ?>
-
-							<?php if (!empty($footer_quick_links_items)) : ?>
-								<ul class="footer-block__list">
-
-									<?php foreach ($footer_quick_links_items as $item) : ?>
-
-										<?php
-										$link_data = orzel_footer_get_link_data($item);
-
-										$item_url = $link_data['url'];
-										$item_target = $link_data['target'];
-										$item_label = $link_data['label'];
-										?>
-
-										<?php if ($item_url && $item_label) : ?>
-											<li class="footer-block__item">
-												<a
-													href="<?php echo esc_url($item_url); ?>"
-													target="<?php echo esc_attr($item_target); ?>"
-													class="footer-block__link">
-
-													<?php echo esc_html($item_label); ?>
-
-												</a>
-											</li>
-										<?php endif; ?>
-
-									<?php endforeach; ?>
-
-								</ul>
-							<?php endif; ?>
-
-						</div>
-					</div>
-
-					<!-- COLUMN 3 -->
-					<div class="footer-block">
-						<div class="footer-block__wrapper">
-
-							<?php if ($footer_services_title) : ?>
-								<div class="footer-block__title">
-									<?php echo esc_html($footer_services_title); ?>
-								</div>
-							<?php endif; ?>
-
-							<?php if (!empty($footer_services_items)) : ?>
-								<ul class="footer-block__list">
-
-									<?php foreach ($footer_services_items as $item) : ?>
-
-										<?php
-										$link_data = orzel_footer_get_link_data($item);
-
-										$item_url = $link_data['url'];
-										$item_target = $link_data['target'];
-										$item_label = $link_data['label'];
-										?>
-
-										<?php if ($item_url && $item_label) : ?>
-											<li class="footer-block__item">
-												<a
-													href="<?php echo esc_url($item_url); ?>"
-													target="<?php echo esc_attr($item_target); ?>"
-													class="footer-block__link">
-
-													<?php echo esc_html($item_label); ?>
-
-												</a>
-											</li>
-										<?php endif; ?>
-
-									<?php endforeach; ?>
-
-								</ul>
-							<?php endif; ?>
-
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- НИЖНЯЯ ЧАСТЬ НЕ ТРОГАЕМ -->
-			<div class="footer-company">
-				<div class="footer-company__wrapper">
-
-					<div class="footer-text">
-						<?php
-						$current_year = date('Y');
-
-						switch ($current_language) {
-							case 'pl':
-								echo '<p class="footer-text__item">© ' . esc_html($current_year) . ' Orzeł Realty. Wszelkie prawa zastrzeżone.</p>';
-								break;
-							case 'ru':
-								echo '<p class="footer-text__item">© ' . esc_html($current_year) . ' Orzeł Realty. Все права защищены.</p>';
-								break;
-							case 'uk':
-								echo '<p class="footer-text__item">© ' . esc_html($current_year) . ' Orzeł Realty. Всі права захищені.</p>';
-								break;
-							default:
-								echo '<p class="footer-text__item">© ' . esc_html($current_year) . ' Orzeł Realty. All rights reserved.</p>';
-								break;
-						}
+					<?php if (!empty($footer_phone['label'])) :
+							$phone_digits = preg_replace('/[^\d+]/', '', $footer_phone['label']);
+							$phone_digits = preg_replace('/(?<!^)\+/', '', $phone_digits);
 						?>
-					</div>
-
-					<?php if ($footer_privacy_label && $footer_privacy_url) : ?>
-						<a href="<?php echo esc_url($footer_privacy_url); ?>" class="footer-text__item">
-							<?php echo esc_html($footer_privacy_label); ?>
+						<a href="tel:<?php echo esc_attr($phone_digits); ?>" class="footer__contact-row">
+							<?php if (!empty($footer_phone['icon']['ID'])) : ?>
+								<?php echo wp_get_attachment_image($footer_phone['icon']['ID'], [20, 20], false, [
+									'class'       => 'footer__contact-icon',
+									'alt'         => '',
+									'aria-hidden' => 'true',
+								]); ?>
+							<?php endif; ?>
+							<span class="footer__contact-text"><?php echo esc_html($footer_phone['label']); ?></span>
 						</a>
 					<?php endif; ?>
 
-					<div class="developer-data">
-						<p class="developer-data__text">
-							<?php
-							switch ($current_language) {
-								case 'pl':
-									echo 'Strona stworzona przez';
-									break;
-								case 'ru':
-									echo 'Сайт разработан';
-									break;
-								case 'uk':
-									echo 'Сайт розроблено';
-									break;
-								default:
-									echo 'Developed by';
-									break;
-							}
-							?>
-						</p>
-
-						<a href="https://www.bandziuk.com" target="_blank" class="developer-data__link" rel="noopener noreferrer">
-							Bandziuk
+					<?php if (!empty($footer_email['label'])) : ?>
+						<a href="mailto:<?php echo esc_attr($footer_email['label']); ?>" class="footer__contact-row">
+							<?php if (!empty($footer_email['icon']['ID'])) : ?>
+								<?php echo wp_get_attachment_image($footer_email['icon']['ID'], [20, 20], false, [
+									'class'       => 'footer__contact-icon',
+									'alt'         => '',
+									'aria-hidden' => 'true',
+								]); ?>
+							<?php endif; ?>
+							<span class="footer__contact-text"><?php echo esc_html($footer_email['label']); ?></span>
 						</a>
-					</div>
+					<?php endif; ?>
+
+					<?php if (!empty($footer_address['label'])) : ?>
+						<a href="<?php echo esc_url('https://www.google.com/maps/search/?api=1&query=' . urlencode($footer_address['label'])); ?>"
+						   class="footer__contact-row"
+						   target="_blank"
+						   rel="noopener noreferrer">
+							<?php if (!empty($footer_address['icon']['ID'])) : ?>
+								<?php echo wp_get_attachment_image($footer_address['icon']['ID'], [20, 20], false, [
+									'class'       => 'footer__contact-icon',
+									'alt'         => '',
+									'aria-hidden' => 'true',
+								]); ?>
+							<?php endif; ?>
+							<span class="footer__contact-text"><?php echo esc_html($footer_address['label']); ?></span>
+						</a>
+					<?php endif; ?>
+
+					<?php if (!empty($footer_telegram['label'])) : ?>
+						<a href="<?php echo esc_url($footer_telegram['url'] ?? ''); ?>" class="footer__contact-row" target="_blank" rel="noopener noreferrer">
+							<?php if (!empty($footer_telegram['icon']['ID'])) : ?>
+								<?php echo wp_get_attachment_image($footer_telegram['icon']['ID'], [20, 20], false, [
+									'class'       => 'footer__contact-icon',
+									'alt'         => '',
+									'aria-hidden' => 'true',
+								]); ?>
+							<?php endif; ?>
+							<span class="footer__contact-text"><?php echo esc_html($footer_telegram['label']); ?></span>
+						</a>
+					<?php endif; ?>
 
 				</div>
 			</div>
-
 		</div>
-	</footer>
-	</div>
-	<script>
-		var currentLang = '<?php echo pll_current_language(); ?>';
-	</script>
-	<div id="messagePopup" class="message-popup-form" style="display: none;">
-		<div class="message-popup-form-content">
-			<span class="close-popup-form-button" onclick="document.getElementById('messagePopup').style.display='none'">&times;</span>
-			<div class="order-content">
-				<p id="popupTitle" class="order-content__title">Ваше сообщение здесь</p>
-				<p id="popupMessage" class="order-content__subtitle">Ваше сообщение здесь</p>
+
+		<?php
+		$ql_title  = !empty($footer_quick_links['title']) ? $footer_quick_links['title'] : '';
+		$ql_items  = !empty($footer_quick_links['items']) ? $footer_quick_links['items'] : [];
+		$svc_title = !empty($footer_services['title'])    ? $footer_services['title']    : '';
+		$svc_items = !empty($footer_services['items'])    ? $footer_services['items']    : [];
+		?>
+
+		<?php if (!empty($ql_items) || !empty($svc_items)) : ?>
+		<div class="footer__nav">
+
+			<?php if (!empty($ql_items)) : ?>
+			<div class="footer__nav-col">
+				<?php if ($ql_title) : ?>
+					<p class="footer__nav-title"><?php echo esc_html($ql_title); ?></p>
+				<?php endif; ?>
+				<ul class="footer__nav-list">
+					<?php foreach ($ql_items as $item) :
+						$raw         = $item['url'] ?? '';
+						if (is_array($raw)) {
+							$item_url    = $raw['url']    ?? '';
+							$item_target = $raw['target'] ?? '_self';
+							$item_label  = !empty($item['label']) ? $item['label'] : ($raw['title'] ?? '');
+						} else {
+							$item_url    = $raw;
+							$item_target = '_self';
+							$item_label  = $item['label'] ?? '';
+						}
+						if (empty($item_url) || empty($item_label)) continue;
+					?>
+						<li class="footer__nav-item">
+							<a href="<?php echo esc_url($item_url); ?>"
+							   target="<?php echo esc_attr($item_target); ?>"
+							   class="footer__nav-link">
+								<?php echo esc_html($item_label); ?>
+							</a>
+						</li>
+					<?php endforeach; ?>
+				</ul>
 			</div>
-		</div>
-	</div>
+			<?php endif; ?>
 
-	<?php
-	$current_lang = function_exists('pll_current_language') ? pll_current_language() : 'pl';
-	$lang = in_array($current_lang, ['pl', 'en', 'ru', 'uk'], true) ? $current_lang : 'pl';
-
-	$cookie_i18n = [
-		'text' => [
-			'pl' => 'Używamy plików cookies, aby zapewnić prawidłowe działanie strony oraz analizować ruch. Możesz zaakceptować lub odrzucić dodatkowe cookies.',
-			'en' => 'We use cookies to ensure proper website operation and to analyze traffic. You can accept or reject additional cookies.',
-			'ru' => 'Мы используем cookies, чтобы сайт работал корректно и для анализа трафика. Вы можете принять или отклонить дополнительные cookies.',
-			'uk' => 'Ми використовуємо cookies, щоб сайт працював коректно та для аналізу трафіку. Ви можете прийняти або відхилити додаткові cookies.',
-		],
-		'accept' => [
-			'pl' => 'Akceptuję',
-			'en' => 'Accept',
-			'ru' => 'Принять',
-			'uk' => 'Прийняти',
-		],
-		'decline' => [
-			'pl' => 'Odrzucam',
-			'en' => 'Decline',
-			'ru' => 'Отклонить',
-			'uk' => 'Відхилити',
-		],
-		'policy' => [
-			'pl' => 'Polityka prywatności',
-			'en' => 'Privacy Policy',
-			'ru' => 'Политика конфиденциальности',
-			'uk' => 'Політика конфіденційності',
-		],
-	];
-
-	$privacy_page_url = 'https://orzel-realty.pl/polityka-prywatnosci/';
-	?>
-
-	<div class="cookie-banner" id="cookie-banner" hidden>
-		<div class="cookie-banner__inner">
-			<p class="cookie-banner__text">
-				<?php echo esc_html($cookie_i18n['text'][$lang]); ?>
-				<a href="<?php echo esc_url($privacy_page_url); ?>">
-					<?php echo esc_html($cookie_i18n['policy'][$lang]); ?>
-				</a>
-			</p>
-
-			<div class="cookie-banner__actions">
-				<button type="button" class="cookie-banner__button cookie-banner__button--accept" id="cookie-accept">
-					<?php echo esc_html($cookie_i18n['accept'][$lang]); ?>
-				</button>
-
-				<button type="button" class="cookie-banner__button cookie-banner__button--decline" id="cookie-decline">
-					<?php echo esc_html($cookie_i18n['decline'][$lang]); ?>
-				</button>
+			<?php if (!empty($svc_items)) : ?>
+			<div class="footer__nav-col">
+				<?php if ($svc_title) : ?>
+					<p class="footer__nav-title"><?php echo esc_html($svc_title); ?></p>
+				<?php endif; ?>
+				<ul class="footer__nav-list">
+					<?php foreach ($svc_items as $item) :
+						$raw         = $item['url'] ?? '';
+						if (is_array($raw)) {
+							$item_url    = $raw['url']    ?? '';
+							$item_target = $raw['target'] ?? '_self';
+							$item_label  = !empty($item['label']) ? $item['label'] : ($raw['title'] ?? '');
+						} else {
+							$item_url    = $raw;
+							$item_target = '_self';
+							$item_label  = $item['label'] ?? '';
+						}
+						if (empty($item_url) || empty($item_label)) continue;
+					?>
+						<li class="footer__nav-item">
+							<a href="<?php echo esc_url($item_url); ?>"
+							   target="<?php echo esc_attr($item_target); ?>"
+							   class="footer__nav-link">
+								<?php echo esc_html($item_label); ?>
+							</a>
+						</li>
+					<?php endforeach; ?>
+				</ul>
 			</div>
+			<?php endif; ?>
+
+		</div>
+		<?php endif; ?>
+
+		<div class="footer__bottom">
+
+			<p class="footer__copyright"><?php echo esc_html($footer_copyright); ?></p>
+
+			<?php if (($footer_privacy_label && $footer_privacy_url) || ($footer_terms_label && $footer_terms_url)) : ?>
+				<div class="footer__links">
+					<?php if ($footer_privacy_label && $footer_privacy_url) : ?>
+						<a href="<?php echo esc_url($footer_privacy_url); ?>" class="footer__link">
+							<?php echo esc_html($footer_privacy_label); ?>
+						</a>
+					<?php endif; ?>
+					<?php if ($footer_terms_label && $footer_terms_url) : ?>
+						<a href="<?php echo esc_url($footer_terms_url); ?>" class="footer__link">
+							<?php echo esc_html($footer_terms_label); ?>
+						</a>
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
+
+			<div class="footer__developer">
+				<span class="footer__developer-text"><?php
+					switch ($current_language) {
+						case 'ru': echo 'Сайт разработан'; break;
+						case 'uk': echo 'Сайт розроблено'; break;
+						case 'pl': echo 'Strona stworzona przez'; break;
+						default:   echo 'Developed by'; break;
+					}
+				?></span>
+				<a href="https://www.bandziuk.com" target="_blank" class="footer__developer-link" rel="noopener noreferrer">Bandziuk</a>
+			</div>
+
+		</div>
+
+	</div>
+</footer>
+</div>
+<script>
+	var currentLang = '<?php echo pll_current_language(); ?>';
+</script>
+<div id="messagePopup" class="message-popup-form" style="display: none;">
+	<div class="message-popup-form-content">
+		<span class="close-popup-form-button" onclick="document.getElementById('messagePopup').style.display='none'">&times;</span>
+		<div class="order-content">
+			<p id="popupTitle" class="order-content__title">Ваше сообщение здесь</p>
+			<p id="popupMessage" class="order-content__subtitle">Ваше сообщение здесь</p>
 		</div>
 	</div>
+</div>
 
-	<?php wp_footer(); ?>
-	</body>
+<?php
+$current_lang = function_exists('pll_current_language') ? pll_current_language() : 'pl';
+$lang = in_array($current_lang, ['pl', 'en', 'ru', 'uk'], true) ? $current_lang : 'pl';
 
-	</html>
+$cookie_i18n = [
+	'text' => [
+		'pl' => 'Używamy plików cookies, aby zapewnić prawidłowe działanie strony oraz analizować ruch. Możesz zaakceptować lub odrzucić dodatkowe cookies.',
+		'en' => 'We use cookies to ensure proper website operation and to analyze traffic. You can accept or reject additional cookies.',
+		'ru' => 'Мы используем cookies, чтобы сайт работал корректно и для анализа трафика. Вы можете принять или отклонить дополнительные cookies.',
+		'uk' => 'Ми використовуємо cookies, щоб сайт працював коректно та для аналізу трафіку. Ви можете прийняти або відхилити додаткові cookies.',
+	],
+	'accept' => [
+		'pl' => 'Akceptuję',
+		'en' => 'Accept',
+		'ru' => 'Принять',
+		'uk' => 'Прийняти',
+	],
+	'decline' => [
+		'pl' => 'Odrzucam',
+		'en' => 'Decline',
+		'ru' => 'Отклонить',
+		'uk' => 'Відхилити',
+	],
+	'policy' => [
+		'pl' => 'Polityka prywatności',
+		'en' => 'Privacy Policy',
+		'ru' => 'Политика конфиденциальности',
+		'uk' => 'Політика конфіденційності',
+	],
+];
+
+$privacy_page_url = 'https://orzel-realty.pl/polityka-prywatnosci/';
+?>
+
+<div class="cookie-banner" id="cookie-banner" hidden>
+	<div class="cookie-banner__inner">
+		<p class="cookie-banner__text">
+			<?php echo esc_html($cookie_i18n['text'][$lang]); ?>
+			<a href="<?php echo esc_url($privacy_page_url); ?>">
+				<?php echo esc_html($cookie_i18n['policy'][$lang]); ?>
+			</a>
+		</p>
+
+		<div class="cookie-banner__actions">
+			<button type="button" class="cookie-banner__button cookie-banner__button--accept" id="cookie-accept">
+				<?php echo esc_html($cookie_i18n['accept'][$lang]); ?>
+			</button>
+
+			<button type="button" class="cookie-banner__button cookie-banner__button--decline" id="cookie-decline">
+				<?php echo esc_html($cookie_i18n['decline'][$lang]); ?>
+			</button>
+		</div>
+	</div>
+</div>
+
+<?php wp_footer(); ?>
+</body>
+
+</html>

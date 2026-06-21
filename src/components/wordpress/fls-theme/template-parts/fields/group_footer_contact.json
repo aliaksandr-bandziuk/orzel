@@ -1,0 +1,298 @@
+{
+  "key": "group_footer_contact",
+  "title": "Footer",
+  "fields": [
+    {
+      "key": "field_footer_heading",
+      "label": "Heading",
+      "name": "footer_heading",
+      "type": "text",
+      "instructions": "e.g. Skontaktuj się z nami",
+      "required": 0
+    },
+    {
+      "key": "field_footer_subheading",
+      "label": "Subheading",
+      "name": "footer_subheading",
+      "type": "text",
+      "instructions": "e.g. Porozmawiajmy o Twoim projekcie.",
+      "required": 0
+    },
+    {
+      "key": "field_footer_phone",
+      "label": "Phone",
+      "name": "footer_phone",
+      "type": "group",
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_phone_icon",
+          "label": "Icon",
+          "name": "icon",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail",
+          "library": "all",
+          "instructions": "Upload a light-colored PNG icon (~40×40px).",
+          "required": 0
+        },
+        {
+          "key": "field_footer_phone_label",
+          "label": "Phone number",
+          "name": "label",
+          "type": "text",
+          "placeholder": "+48 123 456 789",
+          "instructions": "Enter the number as displayed (e.g. +48 123 456 789). The tel: link is built automatically — no need to enter a separate URL.",
+          "required": 0
+        }
+      ]
+    },
+    {
+      "key": "field_footer_email",
+      "label": "Email",
+      "name": "footer_email",
+      "type": "group",
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_email_icon",
+          "label": "Icon",
+          "name": "icon",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail",
+          "library": "all",
+          "instructions": "Upload a light-colored PNG icon (~40×40px).",
+          "required": 0
+        },
+        {
+          "key": "field_footer_email_label",
+          "label": "Display text (used as mailto: address)",
+          "name": "label",
+          "type": "text",
+          "placeholder": "kontakt@orzelrealty.pl",
+          "required": 0
+        }
+      ]
+    },
+    {
+      "key": "field_footer_address",
+      "label": "Address",
+      "name": "footer_address",
+      "type": "group",
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_address_icon",
+          "label": "Icon",
+          "name": "icon",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail",
+          "library": "all",
+          "instructions": "Upload a light-colored PNG icon (~40×40px).",
+          "required": 0
+        },
+        {
+          "key": "field_footer_address_label",
+          "label": "Address text",
+          "name": "label",
+          "type": "text",
+          "placeholder": "ul. Orzel 12, 00-540 Warszawa",
+          "required": 0
+        }
+      ]
+    },
+    {
+      "key": "field_footer_telegram",
+      "label": "Telegram",
+      "name": "footer_telegram",
+      "type": "group",
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_telegram_icon",
+          "label": "Icon",
+          "name": "icon",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail",
+          "library": "all",
+          "instructions": "Upload a light-colored PNG icon (~40×40px).",
+          "required": 0
+        },
+        {
+          "key": "field_footer_telegram_label",
+          "label": "Display text",
+          "name": "label",
+          "type": "text",
+          "placeholder": "Telegram",
+          "required": 0
+        },
+        {
+          "key": "field_footer_telegram_url",
+          "label": "Telegram URL",
+          "name": "url",
+          "type": "url",
+          "placeholder": "https://t.me/yourhandle",
+          "required": 0
+        }
+      ]
+    },
+    {
+      "key": "field_footer_bg_image",
+      "label": "Background Image",
+      "name": "footer_bg_image",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all",
+      "instructions": "Full-bleed footer background photo. Landscape orientation recommended.",
+      "required": 0
+    },
+    {
+      "key": "field_footer_copyright",
+      "label": "Copyright text",
+      "name": "footer_copyright",
+      "type": "text",
+      "placeholder": "© {year} Orzeł Realty. Wszelkie prawa zastrzeżone.",
+      "instructions": "Use {year} as a placeholder for the current year — it is replaced automatically. Example: © {year} Orzeł Realty. Wszelkie prawa zastrzeżone. Leave blank to use the auto-generated fallback.",
+      "required": 0
+    },
+    {
+      "key": "field_footer_privacy_label",
+      "label": "Privacy link label",
+      "name": "footer_privacy_label",
+      "type": "text",
+      "placeholder": "Polityka prywatności",
+      "required": 0
+    },
+    {
+      "key": "field_footer_privacy_url",
+      "label": "Privacy link URL",
+      "name": "footer_privacy_url",
+      "type": "url",
+      "placeholder": "https://",
+      "required": 0
+    },
+    {
+      "key": "field_footer_terms_label",
+      "label": "Terms link label",
+      "name": "footer_terms_label",
+      "type": "text",
+      "placeholder": "Regulamin",
+      "required": 0
+    },
+    {
+      "key": "field_footer_terms_url",
+      "label": "Terms link URL",
+      "name": "footer_terms_url",
+      "type": "url",
+      "placeholder": "https://",
+      "required": 0
+    },
+    {
+      "key": "field_footer_quick_links",
+      "label": "Quick Links",
+      "name": "footer_quick_links",
+      "type": "group",
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_quick_links_title",
+          "label": "Column title",
+          "name": "title",
+          "type": "text",
+          "placeholder": "Quick Links",
+          "required": 0
+        },
+        {
+          "key": "field_footer_quick_links_items",
+          "label": "Items",
+          "name": "items",
+          "type": "repeater",
+          "layout": "table",
+          "button_label": "Add link",
+          "min": 0,
+          "max": 0,
+          "sub_fields": [
+            {
+              "key": "field_footer_quick_links_item_label",
+              "label": "Label",
+              "name": "label",
+              "type": "text",
+              "required": 0
+            },
+            {
+              "key": "field_footer_quick_links_item_url",
+              "label": "URL",
+              "name": "url",
+              "type": "link",
+              "return_format": "array",
+              "required": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "field_footer_services",
+      "label": "Services",
+      "name": "footer_services",
+      "type": "group",
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_services_title",
+          "label": "Column title",
+          "name": "title",
+          "type": "text",
+          "placeholder": "Usługi",
+          "required": 0
+        },
+        {
+          "key": "field_footer_services_items",
+          "label": "Items",
+          "name": "items",
+          "type": "repeater",
+          "layout": "table",
+          "button_label": "Add link",
+          "min": 0,
+          "max": 0,
+          "sub_fields": [
+            {
+              "key": "field_footer_services_item_label",
+              "label": "Label",
+              "name": "label",
+              "type": "text",
+              "required": 0
+            },
+            {
+              "key": "field_footer_services_item_url",
+              "label": "URL",
+              "name": "url",
+              "type": "link",
+              "return_format": "array",
+              "required": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "location": [
+    [{"param": "options_page", "operator": "==", "value": "footer-pl"}],
+    [{"param": "options_page", "operator": "==", "value": "footer-ru"}],
+    [{"param": "options_page", "operator": "==", "value": "footer-en"}],
+    [{"param": "options_page", "operator": "==", "value": "footer-uk"}]
+  ],
+  "menu_order": 10,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}
