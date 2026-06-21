@@ -1,0 +1,209 @@
+.portfolio-block {
+    padding-block: clamp(3.125rem, 1.875rem + 5vw, 5.625rem);
+    background-color: var(--brand-color);
+
+    &__container {
+        max-width: 1200px;
+        margin-inline: auto;
+        padding-inline: clamp(1rem, 4vw, 2rem);
+    }
+
+    // ── Section header ────────────────────────────────────────────────────────
+
+    &__head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: clamp(1.5rem, 2vw, 2.5rem);
+    }
+
+    &__title {
+        font-family: var(--font-heading);
+        font-size: clamp(1.75rem, 1.25rem + 2vw, 2.5rem);
+        font-weight: 600;
+        color: var(--text-primary);
+        line-height: 1.2;
+        margin: 0;
+    }
+
+    &__view-all {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-body);
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: var(--accent-color);
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: color 0.25s ease;
+
+        svg {
+            transition: transform 0.25s ease;
+        }
+
+        @media screen and (min-width: 768px) {
+            &:hover {
+                color: var(--hover-color);
+
+                svg {
+                    transform: translateX(4px);
+                }
+            }
+        }
+    }
+
+    // ── Slider wrap + nav buttons ─────────────────────────────────────────────
+
+    &__slider-wrap {
+        position: relative;
+    }
+
+    &__nav {
+        display: none;
+
+        @media screen and (min-width: 768px) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 40%;
+            z-index: 10;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1.5px solid var(--accent-color);
+            background-color: #ffffff;
+            color: var(--accent-color);
+            cursor: pointer;
+            transition: background-color 0.25s ease, color 0.25s ease;
+
+            &:hover {
+                background-color: var(--accent-color);
+                color: #ffffff;
+            }
+
+            &--prev {
+                left: 0;
+                transform: translateX(-50%) translateY(-50%);
+            }
+
+            &--next {
+                right: 0;
+                transform: translateX(50%) translateY(-50%);
+            }
+        }
+    }
+
+    // ── Pagination ────────────────────────────────────────────────────────────
+
+    &__pagination {
+        margin-top: clamp(1rem, 1.5vw, 1.5rem);
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+
+        .swiper-pagination-bullet {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--concrete-color);
+            opacity: 1;
+            transition: background-color 0.25s ease, transform 0.25s ease;
+
+            &-active {
+                background-color: var(--accent-color);
+                transform: scale(1.3);
+            }
+        }
+    }
+
+    // ── Card ──────────────────────────────────────────────────────────────────
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        text-decoration: none;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #ffffff;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
+
+        @media screen and (min-width: 768px) {
+            &:hover {
+                box-shadow: 0 6px 28px rgba(0, 0, 0, 0.14);
+                transform: translateY(-3px);
+
+                .portfolio-block__card-arrow {
+                    color: var(--hover-color);
+                    transform: translateX(4px);
+                }
+
+                .portfolio-block__card-img {
+                    transform: scale(1.04);
+                }
+            }
+        }
+    }
+
+    &__card-image {
+        flex: 0 0 auto;
+        overflow: hidden;
+        aspect-ratio: 3 / 2;
+    }
+
+    &__card-img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+
+        &--placeholder {
+            background-color: var(--concrete-color);
+        }
+    }
+
+    &__card-shelf {
+        display: flex;
+        flex: 1;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 16px;
+        background-color: #ffffff;
+    }
+
+    &__card-info {
+        min-width: 0;
+    }
+
+    &__card-title {
+        font-family: var(--font-heading);
+        font-size: clamp(0.9375rem, 0.875rem + 0.25vw, 1.0625rem);
+        font-weight: 600;
+        color: var(--text-primary);
+        line-height: 1.3;
+        margin: 0;
+    }
+
+    &__card-location {
+        font-family: var(--font-body);
+        font-size: 0.8125rem;
+        color: var(--text-secondary);
+        margin: 3px 0 0;
+    }
+
+    &__card-arrow {
+        display: flex;
+        flex-shrink: 0;
+        color: var(--accent-color);
+        transition: color 0.25s ease, transform 0.25s ease;
+    }
+}

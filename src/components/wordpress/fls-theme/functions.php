@@ -314,6 +314,7 @@ function orzel_register_acf_blocks()
 		register_block_type(get_template_directory() . "/template-parts/blocks/faqBlock/block.json");
 		register_block_type(get_template_directory() . "/template-parts/blocks/beforeAfterBlock/block.json");
 		register_block_type(get_template_directory() . "/template-parts/blocks/servicesMainBlock/block.json");
+		register_block_type(get_template_directory() . "/template-parts/blocks/portfolioBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/sliderStandardBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/galleryCustomBlock/block.json");
 		// register_block_type(get_template_directory() . "/template-parts/blocks/ctaLiteBlock/block.json");
@@ -463,6 +464,7 @@ function orzel_render_portfolio_data_metabox($post)
 	$building_type = get_post_meta($post->ID, '_portfolio_building_type', true);
 	$duration      = get_post_meta($post->ID, '_portfolio_duration', true);
 	$service_name  = get_post_meta($post->ID, '_portfolio_service_name', true);
+	$location      = get_post_meta($post->ID, '_portfolio_location', true);
 ?>
 	<p>
 		<label for="portfolio_building_type"><strong>Rodzaj budynku:</strong></label><br>
@@ -477,6 +479,11 @@ function orzel_render_portfolio_data_metabox($post)
 	<p>
 		<label for="portfolio_service_name"><strong>Kwadrat:</strong></label><br>
 		<input type="text" name="portfolio_service_name" id="portfolio_service_name" value="<?php echo esc_attr($service_name); ?>" style="width:100%;" placeholder="np. 120m²">
+	</p>
+
+	<p>
+		<label for="portfolio_location"><strong>Lokalizacja / Miasto:</strong></label><br>
+		<input type="text" name="portfolio_location" id="portfolio_location" value="<?php echo esc_attr($location); ?>" style="width:100%;" placeholder="np. Warszawa">
 	</p>
 	<?php
 }
@@ -511,6 +518,10 @@ function orzel_save_portfolio_metabox($post_id)
 
 	if (isset($_POST['portfolio_service_name'])) {
 		update_post_meta($post_id, '_portfolio_service_name', sanitize_text_field($_POST['portfolio_service_name']));
+	}
+
+	if (isset($_POST['portfolio_location'])) {
+		update_post_meta($post_id, '_portfolio_location', sanitize_text_field($_POST['portfolio_location']));
 	}
 }
 // portfolio metabox end

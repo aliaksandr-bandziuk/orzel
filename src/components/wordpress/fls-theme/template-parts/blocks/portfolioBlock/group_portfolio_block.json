@@ -1,0 +1,50 @@
+{
+  "key": "group_portfolio_block",
+  "title": "Portfolio Block",
+  "fields": [
+    {
+      "key": "field_portfolio_block_title",
+      "label": "Section Title",
+      "name": "title",
+      "type": "text",
+      "default_value": "Nasze realizacje",
+      "placeholder": "Nasze realizacje",
+      "required": 0
+    },
+    {
+      "key": "field_portfolio_block_link_label",
+      "label": "View All — Link Label",
+      "name": "link_label",
+      "type": "text",
+      "default_value": "Zobacz wszystkie realizacje",
+      "placeholder": "Zobacz wszystkie realizacje",
+      "required": 0
+    },
+    {
+      "key": "field_portfolio_block_link_url",
+      "label": "View All — Link URL",
+      "name": "link_url",
+      "type": "url",
+      "placeholder": "/portfolio/",
+      "required": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/portfolioblock"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}

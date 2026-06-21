@@ -299,6 +299,25 @@ function initSingleSlider(sliderBlock) {
 		};
 	}
 
+	if (sliderType === 'portfolio') {
+		options = {
+			...options,
+			loop: true,
+			slidesPerView: 1.15,
+			spaceBetween: 16,
+			breakpoints: {
+				640: {
+					slidesPerView: 2,
+					spaceBetween: 20,
+				},
+				992: {
+					slidesPerView: 3,
+					spaceBetween: 24,
+				},
+			},
+		};
+	}
+
 	const swiper = new Swiper(sliderEl, options);
 
 	if (sliderType === 'reviews') {

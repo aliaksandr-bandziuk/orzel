@@ -1,0 +1,12 @@
+{
+  "name": "acf/portfolioblock",
+  "title": "Portfolio Block",
+  "description": "Portfolio/realizations Swiper slider queried from the portfolio CPT.",
+  "category": "design",
+  "keywords": ["portfolio", "slider", "realizations"],
+  "apiVersion": 2,
+  "acf": {
+    "renderTemplate": "./portfolioBlock.php",
+    "mode": "preview"
+  }
+}

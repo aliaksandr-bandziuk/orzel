@@ -15,7 +15,7 @@
 
   &__inner {
     padding: 30px 22px;
-    background: rgba(16, 32, 57, 0.9);
+    background: var(--tree-color);
     border-radius: 2px;
     text-align: center;
     max-width: 1000px;
@@ -30,6 +30,7 @@
     max-width: 850px;
     margin: 0 auto;
   }
+
 }
 
 .input-container {
@@ -42,7 +43,7 @@
   width: 100%;
   outline: none;
   // border: 2px solid #B3B3B3;
-  border-bottom: 1px solid #B3B3B3;
+  border-bottom: 1px solid var(--concrete-color);
   // background: #fafafa;
   padding: 0.6rem 1.2rem;
   color: #fff;
@@ -140,7 +141,7 @@ textarea.input-contact {
   font-size: 0.8rem;
   // background-color: #007bff;
   opacity: 0;
-  color: #fafafa;
+  color: #ffffff;
   padding: 0.3rem;
 }
 
@@ -239,7 +240,7 @@ textarea.input-contact {
 }
 
 .short-form {
-  background-color: #F7F7F7;
+  background-color: var(--brand-color);
 }
 
 .short-form__wrapper {
@@ -256,7 +257,7 @@ textarea.input-contact {
   input {
     background: #fff;
     padding: 0.6rem 1.2rem;
-    color: #000;
+    color: var(--text-primary);
     font-weight: 500;
     font-size: 0.95rem;
     border-radius: 50px;
@@ -267,13 +268,13 @@ textarea.input-contact {
   .input-contact:-webkit-autofill:hover,
   .input-contact:-webkit-autofill:focus,
   .input-contact:-webkit-autofill:active {
-    -webkit-text-fill-color: #000;
+    -webkit-text-fill-color: var(--text-primary);
   }
 
 
 
   label {
-    color: #000;
+    color: var(--text-primary);
   }
 
   .small-form button {
@@ -285,5 +286,18 @@ textarea.input-contact {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+  }
+}
+
+.final-contact__inner .button-primary {
+  border: 1px solid var(--accent-color);
+  background-color: var(--accent-color);
+  color: #ffffff;
+
+  @media screen and (min-width: 768px) {
+    &:hover {
+      background-color: var(--hover-color);
+      border-color: var(--hover-color);
+    }
   }
 }
