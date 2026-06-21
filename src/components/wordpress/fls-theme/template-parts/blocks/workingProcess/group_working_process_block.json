@@ -42,6 +42,17 @@
           "name": "item_text",
           "type": "textarea",
           "rows": 3
+        },
+        {
+          "key": "field_working_process_item_icon",
+          "label": "Step Icon",
+          "name": "icon",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail",
+          "library": "all",
+          "instructions": "Upload a PNG icon (recommended: ~80×80px, gold on transparent background).",
+          "required": 0
         }
       ]
     }
