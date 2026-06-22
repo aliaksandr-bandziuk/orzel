@@ -1,6 +1,13 @@
 .portfolio-block {
     padding-block: clamp(3.125rem, 1.875rem + 5vw, 5.625rem);
     background-color: var(--brand-color);
+    background:
+    linear-gradient(
+        180deg,
+        #e1d6ca 0%,
+        #e6ddd2 50%,
+        #ece5dc 100%
+    );
 
     &__container {
         max-width: 1200px;

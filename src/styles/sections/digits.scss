@@ -2,6 +2,21 @@
   padding-top: clamp(5rem, 3.75rem + 5vw, 7.5rem);
   padding-bottom: clamp(5rem, 3.75rem + 5vw, 7.5rem);
 
+  .section-pretitle {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin: 0 0 1rem;
+  }
+
+  .h2 {
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+  }
+
   &__wrapper {
     display: grid;
     grid-template-columns: 1fr;
@@ -58,7 +73,7 @@
   }
 
   &__title {
-    color: #787878;
+    color: var(--text-secondary);
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
@@ -67,7 +82,7 @@
   }
 
   &__text {
-    color: #555555;
+    color: var(--text-secondary);
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
@@ -76,9 +91,10 @@
 }
 
 .counter {
-  color: var(--brand-color);
+  color: var(--accent-color);
   font-size: 2rem;
   font-style: normal;
   font-weight: 700;
   line-height: 120%;
+  margin-bottom: 10px;
 }

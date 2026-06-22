@@ -72,7 +72,7 @@ $section_classes = 'main-hero';
         <div class="main-hero__buttons">
 
           <?php if (!empty($services_url) && !empty($services_text)) : ?>
-            <a href="<?php echo esc_url($services_url); ?>" class="services-main main-btn">
+            <a href="<?php echo esc_url($services_url); ?>" class="main-btn">
               <div class="services-main__wrapper">
                 <span class="services-main__icon --icon-ico-triangle" aria-hidden="true"></span>
                 <span class="services-main__text">

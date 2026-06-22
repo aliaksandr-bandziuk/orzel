@@ -3,6 +3,17 @@
 .working-process {
     padding-block: clamp(3.125rem, 1.875rem + 5vw, 5.625rem);
     background-color: var(--brand-color);
+    background:
+    radial-gradient(
+        ellipse at center,
+        rgba(255,255,255,0.10) 0%,
+        rgba(255,255,255,0) 70%
+    ),
+    linear-gradient(
+        180deg,
+        #d8cabb 0%,
+        #e1d6ca 100%
+    );
 
     &__container {
         max-width: 1200px;

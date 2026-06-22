@@ -3,6 +3,18 @@
 .services-main {
     padding-block: clamp(3.125rem, 1.875rem + 5vw, 5.625rem);
     background-color: var(--brand-color);
+    background:
+    radial-gradient(
+        ellipse at center,
+        rgba(255,255,255,0.15) 0%,
+        rgba(255,255,255,0) 60%
+    ),
+    linear-gradient(
+        180deg,
+        #cdb8a2 0%,
+        #d3c1af 50%,
+        #d8cabb 100%
+    );
 
     &__head {
         text-align: center;
