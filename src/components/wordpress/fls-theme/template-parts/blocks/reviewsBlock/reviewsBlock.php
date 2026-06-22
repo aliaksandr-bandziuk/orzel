@@ -51,23 +51,6 @@ if (empty($reviews) || !is_array($reviews)) {
 ?>
 
 <section id="<?php echo esc_attr($block_id); ?>" class="<?php echo esc_attr($classes); ?>">
-  <?php if (!empty($shape_image['ID'])) : ?>
-    <?php
-    echo wp_get_attachment_image(
-      $shape_image['ID'],
-      'full',
-      false,
-      [
-        'class'    => 'reviews__shape',
-        'alt'      => '',
-        'loading'  => 'lazy',
-        'decoding' => 'async',
-      ]
-    );
-    ?>
-  <?php else : ?>
-    <img src="/wp-content/uploads/2026/05/shape-166.png" alt="" class="reviews__shape" loading="lazy" decoding="async">
-  <?php endif; ?>
 
   <div class="reviews__layout">
     <div class="reviews__container">
@@ -200,10 +183,11 @@ if (empty($reviews) || !is_array($reviews)) {
 
           <?php else: ?>
 
+            <?php $placeholder_url = wp_get_upload_dir()['baseurl'] . '/2026/06/review-placeholder.jpg'; ?>
             <div class="reviews__placeholder">
               <img
-                src="/wp-content/uploads/2026/05/handiman.jpg"
-                alt="Remonty mieszkań"
+                src="<?php echo esc_url($placeholder_url); ?>"
+                alt="<?php echo esc_attr($name); ?>"
                 loading="lazy"
                 decoding="async">
             </div>
