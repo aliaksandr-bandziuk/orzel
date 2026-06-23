@@ -24,7 +24,7 @@
     &__title {
         font-family: var(--font-heading);
         font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
-        font-weight: 600;
+        font-weight: 500;
         color: var(--text-primary);
         line-height: 1.2;
         margin-bottom: 16px;
@@ -126,7 +126,7 @@
         width: 56px;
         height: 56px;
         border-radius: 50%;
-        background-color: var(--accent-color);
+        background-color: #fff;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -141,7 +141,7 @@
         object-fit: contain;
         display: block;
         // Converts any dark icon to white for use on the gold badge
-        filter: brightness(0) invert(1);
+        // filter: brightness(0) invert(1);
     }
 
     &__card-title {

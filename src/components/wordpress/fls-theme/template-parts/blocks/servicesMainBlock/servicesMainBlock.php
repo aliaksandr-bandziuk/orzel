@@ -4,13 +4,11 @@ $current_lang  = function_exists('pll_current_language') ? pll_current_language(
 
 $query_args = [
     'post_type'        => 'services',
-    'posts_per_page'   => -1,
+    'posts_per_page'   => 6,
     'post_status'      => 'publish',
     'post_parent'      => 0,
-    'orderby'          => [
-        'menu_order' => 'ASC',
-        'date'       => 'DESC',
-    ],
+    'orderby'          => 'date',
+    'order'            => 'DESC',
     'suppress_filters' => false,
 ];
 

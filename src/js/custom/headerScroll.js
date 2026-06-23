@@ -1,21 +1,14 @@
 function initStickyHeader() {
   const header = document.getElementById('siteHeader');
-  const preheader = document.getElementById('sitePreheader');
   const headerWrapper = document.getElementById('headerWrapper');
   const placeholder = document.getElementById('headerPlaceholder');
 
-  if (!header || !preheader || !headerWrapper || !placeholder) return;
-
-  const desktopMedia = window.matchMedia('(min-width: 980px)');
+  if (!header || !headerWrapper || !placeholder) return;
 
   const updateHeader = () => {
-    const isDesktop = desktopMedia.matches;
-    const preheaderHeight = isDesktop ? preheader.offsetHeight : 0;
-    const headerHeight = headerWrapper.offsetHeight;
+    placeholder.style.height = `${headerWrapper.offsetHeight}px`;
 
-    placeholder.style.height = `${headerHeight}px`;
-
-    if (window.scrollY > preheaderHeight) {
+    if (window.scrollY > 0) {
       header.classList.add('is-scrolled');
     } else {
       header.classList.remove('is-scrolled');

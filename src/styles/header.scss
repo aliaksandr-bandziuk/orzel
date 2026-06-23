@@ -1,54 +1,12 @@
 
 @use "@styles/includes/index.scss" as *;
 
-.preheader {
-  display: none;
-  padding: 10px 0;
-  // background-color: var(--accent-color);
-  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-
-  @media screen and (min-width: 980px) {
-    display: block;
-  }
-
-  &__wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-  }
-}
-
-.preheader-item  {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1rem;
-  color: var(--brand-color);
-}
-
-.preheader__lang {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.svg-inline--map {
-  width: .75em;
-}
-
-.svg-inline--clock {
-  width: 1em;
-}
-
 .header {
   position: fixed;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 50;
-  // background: var(--accent-color);
-
-  @media screen and (min-width: 980px) {
-    padding: 0 0 10px 0;
-  }
 }
 
 .header__placeholder {
@@ -65,19 +23,12 @@
   transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 
   @media screen and (max-width: 980px) {
-    background-color: var(--accent-color);
+    background-color: #cdb8a2;
     // padding: 5px 0;
   }
 }
 
 .header.is-scrolled {
-  .preheader {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-100%);
-    pointer-events: none;
-  }
-
   .header__placeholder {
     display: block;
   }
@@ -88,7 +39,7 @@
     left: 0;
     right: 0;
     z-index: 100;
-    background-color: var(--accent-color);
+    background-color: #cdb8a2;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   }
 }
