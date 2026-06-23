@@ -2,6 +2,49 @@
   margin-bottom: clamp(3.125rem, 1.875rem + 5vw, 5.625rem);
 }
 
+// ── Page Services wrapper — single continuous gradient ─────────────────────────
+
+.services-page {
+  background:
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 70%),
+    linear-gradient(
+      180deg,
+      #cdb8a2 0%,
+      #d3c1af 20%,
+      #d8cabb 40%,
+      #e1d6ca 60%,
+      #e6ddd2 80%,
+      #ece5dc 100%
+    );
+  padding-bottom: clamp(3.125rem, 1.875rem + 5vw, 5.625rem);
+
+  .services {
+    margin-bottom: 0;
+  }
+
+  .services-page-content {
+    margin-bottom: 0;
+  }
+
+  .blog-section {
+    margin-bottom: 0;
+  }
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 0.75rem + 1vw, 1.5rem);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .block-precontent {
   display: flex;
   flex-direction: column;

@@ -7,7 +7,7 @@ $current_lang = pll_current_language();
 ?>
 
 
-<main class="page">
+<main class="page services-page">
   <section
     class="main-hero">
     <div class="main-hero__media">
@@ -113,10 +113,10 @@ $current_lang = pll_current_language();
         $current_post_id = get_the_ID();
         $current_date    = get_the_date('Y-m-d H:i:s');
 
-        // 1. Сначала берём 2 предыдущих проекта
+        // 1. Сначала берём 3 предыдущих проекта
         $args = array(
           'post_type'      => 'services',
-          'posts_per_page' => 2,
+          'posts_per_page' => 3,
           'orderby'        => 'date',
           'order'          => 'DESC',
           'post__not_in'   => array($current_post_id),
@@ -131,7 +131,7 @@ $current_lang = pll_current_language();
 
         $similar_posts = new WP_Query($args);
 
-        // 2. Если нашли меньше 2 — добираем недостающие
+        // 2. Если нашли меньше 3 — добираем недостающие
         $similar_ids = array();
 
         if ($similar_posts->have_posts()) {
@@ -141,7 +141,7 @@ $current_lang = pll_current_language();
         }
 
         $found_posts = count($similar_ids);
-        $needed_posts = 2 - $found_posts;
+        $needed_posts = 3 - $found_posts;
 
         if ($needed_posts > 0) {
           $fallback_args = array(
@@ -163,36 +163,54 @@ $current_lang = pll_current_language();
           wp_reset_postdata();
         }
 
-        // 3. Выводим итоговые 2 карточки
+        // 3. Выводим итоговые 3 карточки
         if (!empty($similar_posts->posts)) :
           foreach ($similar_posts->posts as $post) :
             setup_postdata($post);
+
+            $service_id    = $post->ID;
+            $service_title = get_the_title($service_id);
+            $service_url   = get_permalink($service_id);
+            $icon          = get_field('icon', $service_id);
         ?>
 
-            <a href="<?php the_permalink(); ?>" class="portfolio-card">
-              <div class="portfolio-card__wrapper">
-                <div class="portfolio-inner">
-                  <div class="portfolio-inner__item">
-                    <p class="portfolio-card__title"><?php the_title(); ?></p>
-                  </div>
+            <a href="<?php echo esc_url($service_url); ?>" class="services-main__card">
 
-                  <div class="portfolio-inner__item">
-                    <p class="portfolio-card__excerpt">
-                      <?php echo esc_html(wp_trim_words(get_the_excerpt(), 20, '...')); ?>
-                    </p>
-                  </div>
-                </div>
-
-                <div class="portfolio-card__image">
-                  <?php
-                  if (has_post_thumbnail()) {
-                    the_post_thumbnail('full');
-                  } else {
-                    echo '<img src="' . esc_url(get_template_directory_uri() . '/img/no-image.webp') . '" alt="No image">';
-                  }
-                  ?>
-                </div>
+              <div class="services-main__card-image">
+                <?php if (has_post_thumbnail($service_id)) : ?>
+                  <?php echo get_the_post_thumbnail($service_id, 'large', [
+                    'class'   => 'services-main__card-img',
+                    'alt'     => esc_attr($service_title),
+                    'loading' => 'lazy',
+                  ]); ?>
+                <?php else : ?>
+                  <div class="services-main__card-img services-main__card-img--placeholder"></div>
+                <?php endif; ?>
               </div>
+
+              <div class="services-main__card-shelf">
+
+                <div class="services-main__card-badge">
+                  <?php if (!empty($icon)) : ?>
+                    <?php echo wp_get_attachment_image($icon['ID'], [48, 48], false, [
+                      'class'       => 'services-main__card-icon',
+                      'alt'         => '',
+                      'aria-hidden' => 'true',
+                    ]); ?>
+                  <?php endif; ?>
+                </div>
+
+                <p class="services-main__card-title"><?php echo esc_html($service_title); ?></p>
+
+                <span class="services-main__card-arrow" aria-hidden="true">
+                  <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 1L17 6L12 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M1 6H17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                  </svg>
+                </span>
+
+              </div>
+
             </a>
 
         <?php

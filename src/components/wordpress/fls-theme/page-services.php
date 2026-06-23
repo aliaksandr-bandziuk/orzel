@@ -28,7 +28,7 @@ switch ($current_lang) {
 }
 ?>
 
-<main class="page">
+<main class="page services-page">
   <section class="standard-hero">
     <div class="main-hero__media">
       <div class="main-hero__image">
@@ -117,7 +117,7 @@ switch ($current_lang) {
           if ($query->have_posts()) :
             $has_services = true;
       ?>
-            <div class="services-category">
+            <div class="services-category mb60">
               <h2 class="h2 mb30">
                 <?php echo esc_html($category->name); ?>
               </h2>
@@ -159,47 +159,46 @@ switch ($current_lang) {
 
                     $service_title = get_the_title($service_id);
                     $service_url   = get_permalink($service_id);
-
-                    $image_html = get_the_post_thumbnail(
-                      $service_id,
-                      'large',
-                      [
-                        'class'   => 'service-item__img',
-                        'alt'     => esc_attr($service_title),
-                        'loading' => 'lazy',
-                      ]
-                    );
-
-                    $excerpt = get_the_excerpt($service_id);
-
-                    if (empty($excerpt)) {
-                      $content = get_post_field('post_content', $service_id);
-                      $excerpt = wp_strip_all_tags(strip_shortcodes($content));
-                    }
-
-                    $excerpt = mb_strimwidth(trim($excerpt), 0, 120, '...');
+                    $icon          = get_field('icon', $service_id);
                 ?>
 
-                    <a href="<?php echo esc_url($service_url); ?>" class="service-item services-grid__item">
-                      <?php if ($image_html) : ?>
-                        <div class="service-item__image">
-                          <?php echo $image_html; ?>
-                        </div>
-                      <?php endif; ?>
+                    <a href="<?php echo esc_url($service_url); ?>" class="services-main__card">
 
-                      <div class="service-item__content">
-                        <?php if ($service_title) : ?>
-                          <p class="service-item__title">
-                            <?php echo esc_html($service_title); ?>
-                          </p>
-                        <?php endif; ?>
-
-                        <?php if ($excerpt) : ?>
-                          <p class="service-item__descr">
-                            <?php echo esc_html($excerpt); ?>
-                          </p>
+                      <div class="services-main__card-image">
+                        <?php if (has_post_thumbnail($service_id)) : ?>
+                          <?php echo get_the_post_thumbnail($service_id, 'large', [
+                            'class'   => 'services-main__card-img',
+                            'alt'     => esc_attr($service_title),
+                            'loading' => 'lazy',
+                          ]); ?>
+                        <?php else : ?>
+                          <div class="services-main__card-img services-main__card-img--placeholder"></div>
                         <?php endif; ?>
                       </div>
+
+                      <div class="services-main__card-shelf">
+
+                        <div class="services-main__card-badge">
+                          <?php if (!empty($icon)) : ?>
+                            <?php echo wp_get_attachment_image($icon['ID'], [48, 48], false, [
+                              'class'       => 'services-main__card-icon',
+                              'alt'         => '',
+                              'aria-hidden' => 'true',
+                            ]); ?>
+                          <?php endif; ?>
+                        </div>
+
+                        <p class="services-main__card-title"><?php echo esc_html($service_title); ?></p>
+
+                        <span class="services-main__card-arrow" aria-hidden="true">
+                          <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L17 6L12 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M1 6H17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                          </svg>
+                        </span>
+
+                      </div>
+
                     </a>
 
                 <?php
@@ -225,7 +224,7 @@ switch ($current_lang) {
   </section>
 
   <?php if (get_the_content()) : ?>
-    <section class="services-page-content mb60">
+    <section class="services-page-content">
       <div class="services-page-content__container">
         <div class="entry-content">
           <?php the_content(); ?>
