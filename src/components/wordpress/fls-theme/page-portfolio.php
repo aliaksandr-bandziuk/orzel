@@ -76,7 +76,7 @@ switch ($current_lang) {
 }
 ?>
 
-<main class="page">
+<main class="page services-page">
   <section
     class="standard-hero">
     <div class="main-hero__media">
